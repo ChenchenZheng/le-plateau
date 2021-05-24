@@ -2,26 +2,34 @@
   color: white;
   padding: 6px 20px;
   border-radius: 5px;
-  background: $accent-pink;
+  background-color: $accent-pink;
   border: 2px solid $accent-pink;
-}
 
-.btn-flat:hover {
-  background: $accent-dark-pink;
+  &:hover {
+  background-color: $accent-dark-pink;
   border: 2px solid $accent-dark-pink;
   color: white;
   text-decoration: none;
-}
+  }
 
-.btn-flat-clair {
-  color: $accent-pink;;
-  padding: 6px 20px;
-  border-radius: 5px;
-  border: 2px solid $accent-pink;;
-}
+  &.clair {
+    color: $accent-pink;
+    background-color: transparent;
 
-.btn-flat-clair:hover {
-  color:$accent-dark-pink;
-  border: 2px solid $accent-dark-pink;
-  text-decoration: none;
+    &:hover {
+      color:$accent-dark-pink;
+      border: 2px solid $accent-dark-pink;
+    }
+  }
+
+  &.orange {
+    color: $accent-orange;
+    border: 2px solid $accent-orange;
+    background-color: transparent;
+
+    &:hover {
+      color:$accent-dark-orange;
+      border: 2px solid $accent-dark-orange;
+    }
+  }
 }

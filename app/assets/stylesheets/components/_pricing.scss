@@ -1,0 +1,15 @@
+.pricing {
+  width: 350px;
+  height: 567px;
+  border-radius: 5px;
+  background-color: $background-card;
+  border-top: 15px solid $accent-orange;
+}
+
+li:before {
+  content: "\f00c"; /* FontAwesome Unicode */
+  font-family: FontAwesome;
+  display: inline-block;
+  margin-left: -1.3em; /* same as padding-left set on li */
+  width: 1.3em; /* same as padding-left set on li */
+}

@@ -1,0 +1,24 @@
+.icon-card {
+  width: 20px;
+  height: 20px;
+
+  &.location {
+    fill: $accent-blue;
+  }
+  
+  &.level {
+    fill: $accent-violet;
+  }
+  
+  &.users {
+    fill: $accent-orange;
+  }
+  
+  &.clock {
+    fill: $sea-blue;
+  }
+
+  &.orange {
+    color: $accent-orange;
+  }
+}

@@ -1,4 +1,13 @@
 // Define variables for your color scheme
+$background-black: #1F1D2B;
+$background-card: #242836;
+$accent-pink: #F95969;
+$accent-dark-pink: #c73342;
+$accent-blue: #3EC4EF;
+$accent-orange: #FAD13D;
+$accent-dark-orange: #b6982d;
+$accent-violet: #C71BDB;
+$sea-blue: #458FF6;
 
 // For example:
 $red: #FD1015;
@@ -8,14 +17,6 @@ $orange: #E67E22;
 $green: #1EDD88;
 $gray: #0E0000;
 $light-gray: #F4F4F4;
-$background-black: #1F1D2B;
-$background-card: #242836;
-$accent-pink: #F95969;
-$accent-dark-pink: #c73342;
-$accent-blue: #3EC4EF;
-$accent-orange: #FAD13D;
-$accent-violet: #C71BDB;
-$sea-blue: #458FF6;
 
 body {
   background-color: $background-black;

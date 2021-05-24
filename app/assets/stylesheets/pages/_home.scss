@@ -6,3 +6,17 @@ body {
 .header {
   margin-top: 200px;
 }
+
+.cards, .testimonials {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.pricings {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
