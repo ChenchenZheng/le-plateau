@@ -1,0 +1,27 @@
+.btn-flat {
+  color: white;
+  padding: 6px 20px;
+  border-radius: 5px;
+  background: $accent-pink;
+  border: 2px solid $accent-pink;
+}
+
+.btn-flat:hover {
+  background: $accent-dark-pink;
+  border: 2px solid $accent-dark-pink;
+  color: white;
+  text-decoration: none;
+}
+
+.btn-flat-clair {
+  color: $accent-pink;;
+  padding: 6px 20px;
+  border-radius: 5px;
+  border: 2px solid $accent-pink;;
+}
+
+.btn-flat-clair:hover {
+  color:$accent-dark-pink;
+  border: 2px solid $accent-dark-pink;
+  text-decoration: none;
+}

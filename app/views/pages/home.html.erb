@@ -1,2 +1,24 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col header">
+      <h1>Le plateau</h1>
+      <h2 class="mt-3">Trouve ton jeu de société, tes buddies ou les deux !</h2>
+    </div>
+    <div class="col header">
+    <%= image_tag "jeux.png" %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2 class="mt-5">Découvrez de nouveaux jeux</h2>
+  <div class="cards">
+    <% 5.times do %>
+      <%= render "card" %>
+    <% end %>
+    <div class="card card-solo">
+      <h3 clas="text-center">Découvrir tous les événements de jeux de société...</h3>
+      <%= link_to "Continuer", new_user_session_path, class: "btn-flat" %>
+    </div>
+  </div>
+</div>
