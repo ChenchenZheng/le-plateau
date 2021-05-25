@@ -1,1 +1,46 @@
 // Specific CSS for your home-page
+body {
+  background-color: $background-black;
+}
+
+.banner {
+  margin-top: 200px;
+}
+
+.cards, .testimonials {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.pricings {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.image-right {
+  float: right;
+}
+
+.image-left {
+  float: left;
+}
+
+.image-banner {
+  width: 80%;
+  float: right;
+}
+
+.img_container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(120deg, $background-black, $background-black);
+  opacity: .5;
+}

@@ -1,0 +1,37 @@
+.card {
+  width: 326px;
+  height: 480px;
+  border-radius: 5px;
+  margin-bottom: 25px;
+  background-color: $background-card;
+
+  .img_game {
+    width: 90%;
+    height: 200px;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  .img_profile {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    position: absolute;
+    margin-left: 235px;
+    margin-top: 189px;
+  }
+
+  .card-info {
+    margin: 25px;
+  }
+}
+
+.card-solo {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  text-align: center;
+}
