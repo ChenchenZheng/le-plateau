@@ -2,25 +2,37 @@
   justify-content: space-between;
   background: $background-black;
   
-  ul {
-    color: white;
+  .navbar-brand img {
+    width: 40px;
   }
-}
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
+  .navbar-collapse {
+    flex-grow: 0;
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
-}
+    ul {
+      color: white;
 
-.navbar-light .navbar-nav .nav-link {
-  color: white;
-  transition: 0.3s;
-  margin-right: 15px;
+      .dropdown-menu {
+        background-color: $background-card;
+
+        .dropdown-item {
+          color: white;
+
+          &:hover {
+            background-color: $background-card-clair;
+          }
+        }
+      };
+
+      .nav-link {
+        color: white;
+        transition: 0.3s;
+        margin-right: 15px;
   
-  &:hover {
-    color: $accent-pink;
+        &:hover {
+          color: $accent-pink;
+        }
+      }
+    }
   }
 }
