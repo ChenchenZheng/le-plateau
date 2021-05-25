@@ -4,6 +4,7 @@
   border-radius: 5px;
   background-color: $accent-pink;
   border: 2px solid $accent-pink;
+  transition: 0.3s;
 
   &:hover {
   background-color: $accent-dark-pink;
