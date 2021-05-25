@@ -3,6 +3,21 @@ class EventsController < ApplicationController
 
   def index
     @events = policy_scope(Event).order(created_at: :desc)
+    if params[:location].present?
+      @events = @events.where("address ILIKE ?", "%#{params[:location]}%")
+    end
+    if params[:category].present?
+      sql_query = " \
+        boardgames.category ILIKE :category \
+      "
+      @events = @events.joins(:boardgame).where(sql_query, category: "%#{params[:category]}%")
+    end
+    if params[:level].present?
+      sql_query = " \
+        boardgames.level ILIKE :level \
+      "
+      @events = @events.joins(:boardgame).where(sql_query, level: "%#{params[:level]}%")
+    end
   end
 
   def show

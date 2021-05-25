@@ -5,15 +5,15 @@
   &.location {
     fill: $accent-blue;
   }
-  
+
   &.level {
     fill: $accent-violet;
   }
-  
+
   &.users {
     fill: $accent-orange;
   }
-  
+
   &.clock {
     fill: $sea-blue;
   }
@@ -25,4 +25,8 @@
   &.pink {
     color: $accent-pink;
   }
+}
+
+.fa-search {
+  color: $accent-pink;
 }
