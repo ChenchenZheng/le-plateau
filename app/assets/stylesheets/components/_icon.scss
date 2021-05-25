@@ -1,7 +1,7 @@
 .icon-card {
   width: 20px;
   height: 20px;
-
+  
   &.location {
     fill: $accent-blue;
   }
@@ -29,4 +29,17 @@
 
 .fa-search {
   color: $accent-pink;
+}
+
+  &.blue {
+    color: $accent-blue;
+  }
+
+  &.seablue {
+    color:$sea-blue;
+  }
+
+  &.violet {
+    color: $accent-violet;
+  }
 }
