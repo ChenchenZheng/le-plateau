@@ -1,0 +1,5 @@
+<h1>This is the index</h1>
+<% @events.each do |event| %>
+  <h5><%= link_to event.boardgame.name, event_path(event) %></h5>
+<% end %>
+

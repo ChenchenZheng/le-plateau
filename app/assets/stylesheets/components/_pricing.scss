@@ -1,0 +1,22 @@
+.pricing {
+  width: 350px;
+  height: 567px;
+  border-radius: 5px;
+  background-color: $background-card;
+
+  .freemium {
+    color: $accent-orange;
+  }
+
+  .premium {
+    color: $accent-pink;
+  }
+  
+  &.orange-border {
+    border-top: 15px solid $accent-orange;
+  }
+
+  &.pink-border {
+    border-top: 15px solid $accent-pink;
+  }
+}
