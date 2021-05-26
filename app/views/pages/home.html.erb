@@ -11,12 +11,12 @@
 <div class="row">
   <h2 class="home-heading2">Découvrez de nouveaux jeux</h2>
   <div class="cards">
-    <% 5.times do %>
-      <%= render "shared/card" %>
+    <% Event.all.last(5).each do |event| %>
+      <%= render "shared/card", event: event %>
     <% end %>
     <div class="card card-solo">
       <h3 clas="text-center">Découvrir tous les événements de jeux de société...</h3>
-      <%= link_to "Continuer", new_user_session_path, class: "btn-flat" %>
+      <%= link_to "Continuer", events_path, class: "btn-flat" %>
     </div>
   </div>
 </div>
@@ -43,9 +43,7 @@
 <div class="row">
   <h2 class="home-heading2">Nos clients heureux</h2>
   <div class="testimonials">
-    <% 3.times do %>
-      <%= render "shared/testimonial" %>
-    <% end %>
+    <%= render "shared/testimonial" %>
   </div>
 </div>
 

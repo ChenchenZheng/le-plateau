@@ -2,19 +2,19 @@
   <%= image_tag "explodingkittens.jpg", class:"img_game" %>
   <%= image_tag "user.jpg", class:"img_profile" %>
   <div class="card-info">
-    <h3>Exploding kittens</h3>
+    <h3><%= event.boardgame.name %></h3>
     <div class="d-flex align-items-baseline">
       <i class="fas fa-clock icon-card orange mr-2"></i>
-      <p>1 jour 4 heures</p>
+      <p><%= event.start_time > Time.current ? "Dans #{distance_of_time_in_words(event.start_time - Time.current)}" : "Évènement terminé" %></p>
     </div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis mi, eget venenatis accumsan sed aliquam elit.</p>
+    <p class="event-description"><%= event.description %></p>
     <div class="d-flex align-items-baseline">
       <i class="fas fa-map-marker-alt icon-card blue mr-2"></i>
       <p class="mr-2">Paris</p>
       <i class="fas fa-signal icon-card violet mr-2"></i>
-      <p class="mr-2">Expert</p>
+      <p class="mr-2"><%= event.boardgame.category %></p>
       <i class="fas fa-users icon-card orange mr-2"></i>
-      <p>3/4</p>
+      <p><%= event.participations.count %> / <%= event.nb_players %></p>
     </div>
   </div>
 </div>
