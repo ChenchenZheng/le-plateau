@@ -1,4 +1,6 @@
 class ParticipationsController < ApplicationController
+  before_action :set_participation, only: %i[accept decline]
+
   def new
     @participation = Participation.new
     authorize @participation
@@ -17,4 +19,25 @@ class ParticipationsController < ApplicationController
       render :new
     end
   end
+
+  def accept
+    @participation.statut = "Accepted"
+    @participation.save
+    redirect_to dashboard_path(tab: params[:tab])
+  end
+
+  def decline
+    @participation.statut = "Declined"
+    @participation.save
+    redirect_to dashboard_path(tab: params[:tab])
+  end
+
+
+  private
+
+  def set_participation
+    @participation = Participation.find(params[:id])
+    authorize @participation
+  end
+
 end

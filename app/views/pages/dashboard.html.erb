@@ -6,12 +6,12 @@
 
 <div class="container-all">
   <div class="container-onglets">
-    <div class="onglets active-tab" data-anim="1">Mes évènements</div>
-    <div class="onglets" data-anim="2">Mes participations</div>
-    <div class="onglets" data-anim="3">Mes demandes</div>
+    <div class="onglets <%= !params[:tab] ? "active-tab" : "" %>" data-anim="1">Mes évènements</div>
+    <div class="onglets <%= params[:tab] == "2" ? "active-tab" : "" %>" data-anim="2">Mes participations</div>
+    <div class="onglets <%= params[:tab] == "3" ? "active-tab" : "" %>" data-anim="3">Mes demandes</div>
   </div>
 
-  <div class="content active-content" data-anim="1">
+  <div class="content <%= !params[:tab] ? "active-content" : "inactive-content" %> pb-3" data-anim="1">
     <div class="content-title">
       <% if current_user.events.size > 1 %>
         <h3 class="mt-5">J'ai <%= current_user.events.size %> évènements créés</h3>
@@ -32,16 +32,17 @@
               <p>Adresse: <%= event.address %></p>
               <p>Nombre de joueurs: <%= event.participations.size + 1 %>/<%= event.nb_players %></p>
               <p>Heure: <%= l event.start_time , format: :short %> - <%= l event.end_time, format: :short %></p>
-              <p>Il reste: <%= distance_of_time_in_words(event.start_time - Time.current) %></p>
+              <p>Il reste: <%= event.start_time > Time.current ? distance_of_time_in_words(event.start_time - Time.current) : "Évènement terminé" %></p>
               <small><%= link_to 'Edit', edit_event_path(event), class:'text-muted' %></small>
               <small><%= link_to "Delete", event_path(event), method: :delete, data: {confirm: "Êtes-vous sûr ?"}, class: 'text-danger'  %></small>
             </div>
+          </div>
         </div>
       <% end %>
     </div>
   </div>
 
-  <div class="content inactive-content" data-anim ="2">
+  <div class="content <%= params[:tab] == "2" ? "active-content" : "inactive-content" %> pb-3" data-anim ="2">
     <div class="content-title">
       <% if current_user.participations.size > 1 %>
         <h3 class="mt-5">J'ai <%= current_user.participations.size %> parties à venir</h3>
@@ -58,11 +59,11 @@
           <div class="card-dashboard-infos">
             <div>
               <h2><%= participation.event.boardgame.name %></h2>
-              <p>Organisateur: <%= event.host.first_name %></p>
+              <p>Organisateur: <%= participation.event.user.first_name %></p>
               <p>Adresse: <%= participation.event.address %></p>
-              <p>Nombre de joueurs: <%= event.participations.size + 1 %>/<%= event.nb_players %></p>
-              <p>Heure: <%= l event.start_time , format: :short %> - <%= l event.end_time, format: :short %></p>
-              <p>Il reste: <%= distance_of_time_in_words(event.start_time - Time.current) %></p>
+              <p>Nombre de joueurs: <%= participation.event.participations.size + 1 %>/<%= participation.event.nb_players %></p>
+              <p>Heure: <%= l participation.event.start_time , format: :short %> - <%= l participation.event.end_time, format: :short %></p>
+              <p>Il reste: <%= participation.event.start_time > Time.current ? distance_of_time_in_words(participation.event.start_time - Time.current) : "Évènement terminé" %></p>
               <% if participation.statut == "Accepté" %>
                 <h6 class="text-success">Statut: <%= participation.statut %> <i class="far fa-check-circle"></i></h6>
               <% elsif participation.statut == "Decliné"%>
@@ -77,7 +78,7 @@
     </div>
   </div>
 
-  <div class="content inactive-content" data-anim ="3">
+  <div class="content <%= params[:tab] == "3" ? "active-content" : "inactive-content" %> pb-3" data-anim ="3">
     <div class="content-title">
       <% if current_user.ordered_requests.empty? %>
         <h3 class="mt-5">Pas de demandes de participation pour le moment... </h3>
@@ -93,9 +94,9 @@
                 <div class="card-dashboard-infos">
                   <div>
                     <h5 class="user-interested"><%= request.user.first_name %> veut jouer</h5>
-                    <% if request.statut == "En attente" %>
+                    <% if request.statut == "Pending" %>
                       <h6 class="mb-0"><%= link_to "Accepter", accept_participation_path(request, tab: '3') %> <%= link_to "Décliner", decline_participation_path(request, tab: '3') %></h6>
-                    <% elsif request.statut == "Accepté"%>
+                    <% elsif request.statut == "Accepted"%>
                       <h6 class ="text-success mb-0"><%= request.statut %> <i class="far fa-check-circle"></i></h6>
                     <% else %>
                       <h6 class ="text-danger mb-0"><%= request.statut %> <i class="far fa-times-circle"></i></h6>
