@@ -1,0 +1,13 @@
+.modal-content.black-modal {
+  background-color: $background-card;
+
+  img {
+    width: 100px;
+    float: right;
+  }
+}
+
+.modal-header, .modal-footer {
+  border-top: none;
+  border-bottom: none;
+}
