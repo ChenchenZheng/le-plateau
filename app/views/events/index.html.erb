@@ -4,44 +4,54 @@
     <div class="search-category">
       <%= text_field_tag :location,
         params[:location],
-        class: "form-control border-end-0 border rounded-pill",
-        placeholder: "Où"
+        class: " form-control",
+        placeholder: "Où",
+        id: "event_address"
       %>
     </div>
     <div class="search-category">
       <%= select "",
         :category,
         %w[Espionnage Ludique Rapidité Ruse Stratégie],
-        {prompt: "Select", selected: params[:category]},
-        {class: "form-control border-end-0 border rounded-pill"}
+        {prompt: "Catégorie", selected: params[:category]},
+        {class: "form-control"}
       %>
     </div>
     <div class="search-category">
       <%= select "",
         :level,
         %w[Facile Moyen Difficile],
-        {prompt: "Select", selected: params[:level]},
-        {class: "form-control border-end-0 border rounded-pill"}
+        {prompt: "Niveau", selected: params[:level]},
+        {class: "form-control"}
       %>
     </div>
     <div class="search-button">
-      <%= button_tag type: 'submit', class: "btn btn-outline-secondary bg-white border-start-0 border rounded-pill ms-n3" do %>
+      <%= button_tag type: 'submit', class: "btn btn-search rounded-pill ms-n3" do %>
         <i class="fa fa-search"></i>
       <% end %>
     </div>
   <% end %>
 </div>
 
-<div class="search-results">
-  <% if @events.count == 1 %>
-    <h3> 1 résultat trouvé</h3>
-  <% elsif  @events.count > 1%>
-    <h3><%= @events.count %> résultats trouvés</h3>
-  <% else %>
-    <h3>Aucun évènement correspondant à votre recherche...</h3>
-  <% end %>
+<% if params[:location].present? || params[:category].present? || params[:level].present? %>
+  <div class="search-results">
+    <% if @events.size == 1 %>
+      <h3> 1 résultat trouvé</h3>
+    <% elsif  @events.size > 1%>
+      <h3><%= @events.size %> résultats trouvés</h3>
+    <% else %>
+      <h3>Aucun évènement correspondant à votre recherche...</h3>
+    <% end %>
+  </div>
+<% end %>
 
+<div class= "container mb-3 rounded"
+     id="map"
+     style="width: 100%; height: 500px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="pk.eyJ1Ijoiam9oYW5uYnpoIiwiYSI6ImNrbzRkY2FwMDBhcWEydW15cXZkcTl1amMifQ.hWoeuE6s3P2bhjeThz1mAg">
 </div>
+
 
 <div class="cards">
   <% @events.each do |event| %>
@@ -76,7 +86,5 @@
   <% end %>
 
 </div>
-
-
 
 <%= console %>
