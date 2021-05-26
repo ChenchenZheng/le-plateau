@@ -28,6 +28,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @participation = Participation.new
   end
 
   def new

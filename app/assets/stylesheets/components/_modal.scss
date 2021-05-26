@@ -1,0 +1,17 @@
+.modal-content.black-modal {
+  background-color: $background-card;
+
+  img {
+    width: 100px;
+  }
+}
+
+.modal-header, .modal-footer {
+  border-top: none;
+  border-bottom: none;
+}
+
+h1#exampleModalLabel {
+  flex-grow: 1;
+  text-align: center;
+}

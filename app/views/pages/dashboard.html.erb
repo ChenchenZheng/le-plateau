@@ -1,0 +1,110 @@
+<div class="banner-dashboard" style="background-image: url(<%= asset_path('photo_dashboard.jpg') %>)">
+  <div class="container">
+    <h1 class="text-center">Welcome to your dashboard</h1>
+  </div>
+</div>
+
+<div class="container-all">
+  <div class="container-onglets">
+    <div class="onglets active-tab" data-anim="1">Mes évènements</div>
+    <div class="onglets" data-anim="2">Mes participations</div>
+    <div class="onglets" data-anim="3">Mes demandes</div>
+  </div>
+
+  <div class="content active-content" data-anim="1">
+    <div class="content-title">
+      <% if current_user.events.size > 1 %>
+        <h3 class="mt-5">J'ai <%= current_user.events.size %> évènements créés</h3>
+      <% elsif current_user.events.size >= 1 %>
+        <h3 class="mt-5">J'ai <%= current_user.events.size %> évènement créé</h3>
+      <% else %>
+        <h3 class="mt-5">Je n'ai pas encore créé d'évènement</h3>
+      <% end %>
+    </div>
+    <div class="content-cards">
+      <% current_user.events.each do |event| %>
+        <div class="card-dashboard">
+          <div class="card-dashboard-img"><%= event.boardgame.photo.attached? ? cl_image_tag(boardgame.photo.key) : image_tag('photo_dashboard.jpg') %></div>
+          <div class="card-dashboard-infos">
+            <div>
+              <h2><%= event.boardgame.name %></h2>
+              <p>Organisateur: <%= event.user.first_name %></p>
+              <p>Adresse: <%= event.address %></p>
+              <p>Nombre de joueurs: <%= event.participations.size + 1 %>/<%= event.nb_players %></p>
+              <p>Heure: <%= l event.start_time , format: :short %> - <%= l event.end_time, format: :short %></p>
+              <p>Il reste: <%= distance_of_time_in_words(event.start_time - Time.current) %></p>
+              <small><%= link_to 'Edit', edit_event_path(event), class:'text-muted' %></small>
+              <small><%= link_to "Delete", event_path(event), method: :delete, data: {confirm: "Êtes-vous sûr ?"}, class: 'text-danger'  %></small>
+            </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="content inactive-content" data-anim ="2">
+    <div class="content-title">
+      <% if current_user.participations.size > 1 %>
+        <h3 class="mt-5">J'ai <%= current_user.participations.size %> parties à venir</h3>
+      <% elsif current_user.participations.size >= 1 %>
+        <h3 class="mt-5">J'ai <%= current_user.participations.size %> partie à venir</h3>
+      <% else %>
+        <h3 class="mt-5">Je n'ai pas encore rejoint d'évènement</h3>
+      <% end %>
+    </div>
+    <div class="content-cards">
+      <% current_user.participations.each do |participation| %>
+        <div class="card-dashboard">
+          <div class="card-dashboard-img"><%= participation.event.boardgame.photo.attached? ? cl_image_tag(participation.event.boardgame.photo.key) : image_tag('photo_dashboard.jpg') %></div>
+          <div class="card-dashboard-infos">
+            <div>
+              <h2><%= participation.event.boardgame.name %></h2>
+              <p>Organisateur: <%= event.host.first_name %></p>
+              <p>Adresse: <%= participation.event.address %></p>
+              <p>Nombre de joueurs: <%= event.participations.size + 1 %>/<%= event.nb_players %></p>
+              <p>Heure: <%= l event.start_time , format: :short %> - <%= l event.end_time, format: :short %></p>
+              <p>Il reste: <%= distance_of_time_in_words(event.start_time - Time.current) %></p>
+              <% if participation.statut == "Accepté" %>
+                <h6 class="text-success">Statut: <%= participation.statut %> <i class="far fa-check-circle"></i></h6>
+              <% elsif participation.statut == "Decliné"%>
+                <h6 class="text-danger mb-0">Statut: <%= participation.statut %> <i class="far fa-times-circle"></i></h6>
+              <% else %>
+                <h6 class="text-warning mb-0">Statut: <%= participation.statut %> <i class="far fa-clock"></i></h6>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="content inactive-content" data-anim ="3">
+    <div class="content-title">
+      <% if current_user.ordered_requests.empty? %>
+        <h3 class="mt-5">Pas de demandes de participation pour le moment... </h3>
+    </div>
+      <% else %>
+        <div class="content-title">
+          <h3 class="mt-5">Ils veulent jouer: </h3>
+        </div>
+        <div class="content-cards">
+          <% current_user.ordered_requests.each do |request|  %>
+            <div class="card-dashboard">
+              <%= request.event.boardgame.photo.attached? ? cl_image_tag(request.event.boardgame.photo.key) : image_tag('photo_dashboard.jpg') %>
+                <div class="card-dashboard-infos">
+                  <div>
+                    <h5 class="user-interested"><%= request.user.first_name %> veut jouer</h5>
+                    <% if request.statut == "En attente" %>
+                      <h6 class="mb-0"><%= link_to "Accepter", accept_participation_path(request, tab: '3') %> <%= link_to "Décliner", decline_participation_path(request, tab: '3') %></h6>
+                    <% elsif request.statut == "Accepté"%>
+                      <h6 class ="text-success mb-0"><%= request.statut %> <i class="far fa-check-circle"></i></h6>
+                    <% else %>
+                      <h6 class ="text-danger mb-0"><%= request.statut %> <i class="far fa-times-circle"></i></h6>
+                    <% end %>
+                  </div>
+                </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+  </div>
+</div>

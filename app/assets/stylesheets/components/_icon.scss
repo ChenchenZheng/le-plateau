@@ -2,20 +2,20 @@
   width: 20px;
   height: 20px;
   
-  &.location {
-    fill: $accent-blue;
+  &.blue {
+    color: $accent-blue;
   }
 
-  &.level {
-    fill: $accent-violet;
+  &.violet {
+    color: $accent-violet;
   }
 
-  &.users {
-    fill: $accent-orange;
+  &.orange {
+    color: $accent-orange;
   }
 
-  &.clock {
-    fill: $sea-blue;
+  &.seablue {
+    color: $sea-blue;
   }
 
   &.orange {

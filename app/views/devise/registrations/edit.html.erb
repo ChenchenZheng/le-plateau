@@ -9,7 +9,21 @@
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
-
+    <%= f.input :first_name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "first name" }%>
+    <%= f.input :last_name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "last name" }%>
+    <%= f.input :birth_date,
+                start_year: Time.now.year - 100,
+                end_year: Time.now.year - 18,
+                order: %i(day month year),
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "birthday" }%>
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,

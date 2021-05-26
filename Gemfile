@@ -39,7 +39,12 @@ gem 'simple_form'
 # Geocoding
 gem 'geocoder'
 
-group :development, :test do  gem 'pry-byebug'
+gem 'cloudinary', '~> 1.16.0'
+
+gem 'rails-i18n'
+
+group :development, :test do
+  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
 
