@@ -1,19 +1,19 @@
 .icon-card {
   width: 20px;
   height: 20px;
-
+  
   &.location {
     fill: $accent-blue;
   }
-  
+
   &.level {
     fill: $accent-violet;
   }
-  
+
   &.users {
     fill: $accent-orange;
   }
-  
+
   &.clock {
     fill: $sea-blue;
   }
@@ -24,5 +24,22 @@
 
   &.pink {
     color: $accent-pink;
+  }
+}
+
+.fa-search {
+  color: $accent-pink;
+
+
+  &.blue {
+    color: $accent-blue;
+  }
+
+  &.seablue {
+    color:$sea-blue;
+  }
+
+  &.violet {
+    color: $accent-violet;
   }
 }

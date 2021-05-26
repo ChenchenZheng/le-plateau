@@ -1,5 +1,82 @@
-<h1>This is the index</h1>
-<% @events.each do |event| %>
-  <h5><%= link_to event.boardgame.name, event_path(event) %></h5>
-<% end %>
 
+<div class="search-bar">
+  <%= form_tag events_path, method: :get, id: 'search-category-global' do %>
+    <div class="search-category">
+      <%= text_field_tag :location,
+        params[:location],
+        class: "form-control border-end-0 border rounded-pill",
+        placeholder: "Où"
+      %>
+    </div>
+    <div class="search-category">
+      <%= select "",
+        :category,
+        %w[Espionnage Ludique Rapidité Ruse Stratégie],
+        {prompt: "Select", selected: params[:category]},
+        {class: "form-control border-end-0 border rounded-pill"}
+      %>
+    </div>
+    <div class="search-category">
+      <%= select "",
+        :level,
+        %w[Facile Moyen Difficile],
+        {prompt: "Select", selected: params[:level]},
+        {class: "form-control border-end-0 border rounded-pill"}
+      %>
+    </div>
+    <div class="search-button">
+      <%= button_tag type: 'submit', class: "btn btn-outline-secondary bg-white border-start-0 border rounded-pill ms-n3" do %>
+        <i class="fa fa-search"></i>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="search-results">
+  <% if @events.count == 1 %>
+    <h3> 1 résultat trouvé</h3>
+  <% elsif  @events.count > 1%>
+    <h3><%= @events.count %> résultats trouvés</h3>
+  <% else %>
+    <h3>Aucun évènement correspondant à votre recherche...</h3>
+  <% end %>
+
+</div>
+
+<div class="cards">
+  <% @events.each do |event| %>
+    <div class="card">
+      <%= image_tag "explodingkittens.jpg", class:"img_game" %>
+      <%= image_tag "user.jpg", class:"img_profile" %>
+      <div class="card-info">
+        <h3><%= event.boardgame.name %></h3>
+        <div class="d-flex">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 icon-card mr-2 clock" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+          </svg>
+          <p>1 jour 4 heures</p>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis mi, eget venenatis accumsan sed aliquam elit.</p>
+        <div class="d-flex">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 icon-card mr-2 location" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+          </svg>
+          <p><%= event.address %></p>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 icon-card ml-2 mr-2 level" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+          </svg>
+          <p><%= event.boardgame.level %></p>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 icon-card ml-2 mr-2 users" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
+          </svg>
+          <p>3/4 users</p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</div>
+
+
+
+<%= console %>
