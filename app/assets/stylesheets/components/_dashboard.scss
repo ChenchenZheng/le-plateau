@@ -1,0 +1,196 @@
+.banner-dashboard {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 150px 0;
+}
+
+.banner-dashboard h1 {
+  margin: 0;
+  text-align: left;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.banner-dashboard p {
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+h2 {
+  color:#dc326b;
+}
+
+.active-tab {
+  background: #DD326A;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.active-content {
+  animation: fade 0.3s forwards;
+  display: block;
+}
+
+.inactive-content {
+  display: none;
+}
+
+.container-all{
+  margin: auto;
+  margin-top: 60px;
+  width: 900px;
+  border-radius: 2px;
+
+}
+
+.container-onglets {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  border-bottom: 1px solid rgba(196, 194, 194, 0.883);
+}
+
+.onglets {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 500;
+  cursor: pointer;
+  height: 50px;
+}
+
+.card-dashboard {
+  overflow: hidden;
+  background: white;
+  background-size: cover;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.card-dashboard {
+  img {
+    width: 100%;
+    object-fit: cover;
+    height: 200px;
+  }
+}
+
+.card-product-show {
+  text-align: center;
+  overflow: hidden;
+}
+
+.card-infos-show {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.photo-product-size img {
+  object-fit: cover;
+  width: 100%;
+  height: 350px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  border-radius: 5px;
+}
+
+.booking-calendar {
+  border-radius: 5px;
+  background: white;
+  overflow: hidden;
+  padding: 15px;
+  height: fit-content;
+  margin-top: 95px;
+}
+
+.card-product {
+  padding: 0px;
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.card-product img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.card-product h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-dashboard p {
+  font-size: 14px;
+  opacity: .7;
+  margin: 0;
+}
+
+.card-dashboard-pricing {
+  font-size: 19px;
+  padding: 0px !important;
+  margin:0px;
+}
+
+.card-dashboard .card-dashboard-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+  p {
+    color: black;
+  }
+}
+
+.card-product p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-product .card-product-infos {
+  padding: 16px;
+}
+
+.cards-city {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.reserve-city {
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.content-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.icon {
+  color: #dc326b;
+}
+
+.heading {
+  color: #dc326b;
+}
