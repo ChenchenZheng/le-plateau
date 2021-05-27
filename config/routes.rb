@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'dashboard', to: 'pages#dashboard'
   root to: 'pages#home'
+
+  get 'dashboard', to: 'pages#dashboard'
+
+  get 'profil', to: 'pages#profil'
+
+  resources :users, only: [:show]
+  
   resources :events do
     resources :participations, only: [:new, :create]
   end

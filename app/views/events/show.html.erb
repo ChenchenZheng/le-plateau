@@ -23,11 +23,23 @@
 
   <div class="event-profile mt-5">
     <%= image_tag "user.jpg" %>
-    <h5 class="text-center">Julie Boss</h5>
+    <h5 class="text-center"><%= @event.user.first_name %> <%= @event.user.last_name %></h5>
     <ul>
-      <li>20 ans</li>
-      <li>Organisé 12 jeux</li>
-      <li>Participé aux 33 jeux</li>
+    
+      <li><%= Time.now.year - @event.user.birth_date.year %> ans</li>
+      <% if @event.user.events.count == 0 || 1 %>
+        <li>Organisé <%= @event.user.events.count %> jeu</li>
+      <% else %>
+        <li>Organisé <%= @event.user.events.count %> jeux</li>
+      <% end %>
+     
+      <% if @event.user.participations.select { |p| p.statut == "Accepted"}.count == 0 %>
+        <li>Aucune participation</li>
+      <% elsif @event.user.participations.select { |p| p.statut == "Accepted"}.count == 1 %>
+        <li>Participé à 1 jeu</li>
+      <% else %>
+        <li>Participé aux <%= @event.user.participations.select { |p| p.statut == "Accepted"}.count %> jeux</li>
+      <% end %>
     </ul>
   </div>
 </div>
