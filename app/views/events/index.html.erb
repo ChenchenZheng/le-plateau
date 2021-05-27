@@ -4,7 +4,7 @@
     <div class="search-category">
       <%= text_field_tag :location,
         params[:location],
-        class: " form-control",
+        class: " form-control-events",
         placeholder: "Où",
         id: "event_address"
       %>
@@ -14,7 +14,7 @@
         :category,
         %w[Espionnage Ludique Rapidité Ruse Stratégie],
         {prompt: "Catégorie", selected: params[:category]},
-        {class: "form-control"}
+        {class: "form-control-events"}
       %>
     </div>
     <div class="search-category">
@@ -22,7 +22,7 @@
         :level,
         %w[Facile Moyen Difficile],
         {prompt: "Niveau", selected: params[:level]},
-        {class: "form-control"}
+        {class: "form-control-events"}
       %>
     </div>
     <div class="search-button">
@@ -36,11 +36,11 @@
 <% if params[:location].present? || params[:category].present? || params[:level].present? %>
   <div class="search-results">
     <% if @events.size == 1 %>
-      <h3> 1 résultat trouvé</h3>
+      <h3> <span class="span-result">1 résultat</span> trouvé</h3>
     <% elsif  @events.size > 1%>
-      <h3><%= @events.size %> résultats trouvés</h3>
+      <h3><span class="span-result"><%= @events.size %> résultats</span> trouvés</h3>
     <% else %>
-      <h3>Aucun évènement correspondant à votre recherche...</h3>
+      <h3>Aucun évènement ne correspond à votre recherche...</h3>
     <% end %>
   </div>
 <% end %>
