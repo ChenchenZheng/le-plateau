@@ -26,7 +26,7 @@
     <h5 class="text-center"><%= @event.user.first_name %> <%= @event.user.last_name %></h5>
     <ul>
       <li><%= Time.now.year - @event.user.birth_date.year %> ans</li>
-      <% if @event.user.events.count == 0 || 1 %>
+      <% if @event.user.events.count == 0 || @event.user.events.count == 1 %>
         <li>Organisé <%= @event.user.events.count %> jeu</li>
       <% else %>
         <li>Organisé <%= @event.user.events.count %> jeux</li>
