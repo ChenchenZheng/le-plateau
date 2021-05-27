@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col banner">
     <h1 class="mb-5">Le plateau</h1>
-    <h2 class="mt-3">Trouve ton jeu de société, tes buddies ou les deux !</h2>
+    <h2 class="home-heading2" class="mt-3">Trouve ton jeu de société, tes buddies ou les deux !</h2>
   </div>
   <div class="col banner img_container">
     <%= image_tag "jeux.png", class:"image-banner" %>
@@ -9,21 +9,21 @@
 </div>
 
 <div class="row">
-  <h2 class="mt-5 mb-5">Découvrez de nouveaux jeux</h2>
+  <h2 class="home-heading2">Découvrez de nouveaux jeux</h2>
   <div class="cards">
-    <% 5.times do %>
-      <%= render "shared/card" %>
+    <% Event.all.last(5).each do |event| %>
+      <%= render "shared/card", event: event %>
     <% end %>
     <div class="card card-solo">
       <h3 clas="text-center">Découvrir tous les événements de jeux de société...</h3>
-      <%= link_to "Continuer", new_user_session_path, class: "btn-flat" %>
+      <%= link_to "Continuer", events_path, class: "btn-flat" %>
     </div>
   </div>
 </div>
 
 <div class="row d-flex align-items-center">
   <div class="col-8">
-    <h2 class="mt-5 mb-5">Créez un événement de jeu de société</h2>
+    <h2 class="home-heading2">Créez un événement de jeu de société</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Interdum vestibulum malesuada enim lorem orci viverra tristique orci at. Aliquam, morbi quam a, mus. Malesuada amet pulvinar augue netus diam neque. Ipsum feugiat nisl metus, nunc in purus odio faucibus.</p>
   </div>
   <div class="col-4">
@@ -33,25 +33,22 @@
 <div class="row d-flex align-items-center">
   <div class="col-4">
     <%= image_tag "box.png", class: "image-left" %>
-
   </div>
   <div class="col-8">
-    <h2 class="mt-5 mb-5">Participer à un événement de jeu de société</h2>
+    <h2 class="home-heading2">Participer à un événement de jeu de société</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Interdum vestibulum malesuada enim lorem orci viverra tristique orci at. Aliquam, morbi quam a, mus. Malesuada amet pulvinar augue netus diam neque. Ipsum feugiat nisl metus, nunc in purus odio faucibus.</p>
   </div>
 </div>
 
 <div class="row">
-  <h2 class="mt-5 mb-5">Nos clients heureux</h2>
+  <h2 class="home-heading2">Nos clients heureux</h2>
   <div class="testimonials">
-    <% 3.times do %>
-      <%= render "shared/testimonial" %>
-    <% end %>
+    <%= render "shared/testimonial" %>
   </div>
 </div>
 
 <div class="row">
-  <h2 class="mt-5 mb-5">Nos offres</h2>
+  <h2 class="home-heading2">Nos offres</h2>
   <div class="pricings">
     <%= render "shared/pricing" %>
   </div>

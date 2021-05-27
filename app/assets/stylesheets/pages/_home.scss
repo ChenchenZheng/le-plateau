@@ -7,7 +7,7 @@ body {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .pricings {
@@ -23,4 +23,8 @@ body {
 
 .image-left {
   float: left;
+}
+
+.home-heading2 {
+  margin: 70px 0px;
 }

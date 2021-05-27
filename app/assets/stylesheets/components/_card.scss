@@ -5,6 +5,16 @@
   margin-bottom: 25px;
   background-color: $background-card;
 
+  .event-description {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    height: 90px;
+}
+
   .img_game {
     width: 90%;
     height: 200px;
