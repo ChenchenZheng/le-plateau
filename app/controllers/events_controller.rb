@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   def index
     @events = policy_scope(Event).order(created_at: :desc)
     if params[:location].present?
-      @events = @events.where("address ILIKE ?", "%#{params[:location]}%")
+      @events = @events.near(params[:location], 20)
     end
     if params[:category].present?
       sql_query = " \
@@ -17,6 +17,13 @@ class EventsController < ApplicationController
         boardgames.level ILIKE :level \
       "
       @events = @events.joins(:boardgame).where(sql_query, level: "%#{params[:level]}%")
+    end
+    @markers = @events.geocoded.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { event: event })
+      }
     end
   end
 

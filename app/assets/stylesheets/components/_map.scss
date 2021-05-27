@@ -1,0 +1,13 @@
+.mapboxgl-popup {
+  max-width: 200px;
+  color: $background-black;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#id {
+  z-index: 1;
+}

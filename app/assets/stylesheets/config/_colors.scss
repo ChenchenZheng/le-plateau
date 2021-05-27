@@ -22,7 +22,10 @@ $light-gray: #F4F4F4;
 
 body {
   background-color: $background-black;
-  * {
-    color: white;
-  }
+  color: white;
+
 }
+
+// .ap-dataset-places body * {
+//   color: black;
+// }
