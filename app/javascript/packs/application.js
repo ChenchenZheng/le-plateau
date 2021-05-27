@@ -34,3 +34,5 @@ document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
   dynamicTabs();
 });
+
+import "controllers"
