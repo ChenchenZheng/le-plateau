@@ -24,4 +24,12 @@ class ParticipationPolicy < ApplicationPolicy
   def destroy?
     record.user == user
   end
+
+  def accept?
+    record.event.user == user
+  end
+
+  def decline?
+    record.event.user == user
+  end
 end

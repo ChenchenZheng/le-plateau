@@ -3,7 +3,14 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'pages#dashboard'
   root to: 'pages#home'
   resources :events do
-    resources :participations, only: [ :new, :create, :edit, :update, :destroy]
+    resources :participations, only: [:new, :create]
   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  resources :participations, only: [:index, :show, :edit, :update, :destroy] do
+    member do
+      get :accept
+      get :decline
+    end
+  end
+
 end
