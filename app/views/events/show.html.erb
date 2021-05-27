@@ -22,10 +22,9 @@
   </div>
 
   <div class="event-profile mt-5">
-    <%= image_tag "user.jpg" %>
+    <%= @event.user.photo.attached? ? cl_image_tag(@event.user.photo.key) : image_tag('user.jpg') %>
     <h5 class="text-center"><%= @event.user.first_name %> <%= @event.user.last_name %></h5>
     <ul>
-    
       <li><%= Time.now.year - @event.user.birth_date.year %> ans</li>
       <% if @event.user.events.count == 0 || 1 %>
         <li>Organisé <%= @event.user.events.count %> jeu</li>

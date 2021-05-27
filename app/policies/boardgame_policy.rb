@@ -1,19 +1,15 @@
-class UserPolicy < ApplicationPolicy
+class BoardgamePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
     end
   end
 
-  def show?
+  def new?
     true
   end
 
-  def edit?
-    true
-  end
-
-  def update?
+  def create?
     true
   end
 end
