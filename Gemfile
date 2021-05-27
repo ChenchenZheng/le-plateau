@@ -43,6 +43,10 @@ gem 'cloudinary', '~> 1.16.0'
 
 gem 'rails-i18n'
 
+# Admin page pour les dev
+gem 'rails_admin', '~> 2.0'
+gem 'rails_admin-i18n'
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'

@@ -8,7 +8,7 @@
       <p><%= event.start_time > Time.current ? "Dans #{distance_of_time_in_words(event.start_time - Time.current)}" : "Évènement terminé" %></p>
     </div>
     <p class="event-description"><%= event.description %></p>
-    <div class="d-flex align-items-baseline">
+    <div class="d-flex align-items-baseline event-icons">
       <i class="fas fa-map-marker-alt icon-card blue mr-2"></i>
       <p class="mr-2"> <%= event.city %></p>
       <i class="fas fa-signal icon-card violet mr-2"></i>

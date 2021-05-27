@@ -70,6 +70,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:boardgame_id, :address, :description, :nb_players, :start_time, :end_time)
+    params.require(:event).permit(:boardgame_id, :address, :description, :nb_players, :start_time, :end_time, :city)
   end
 end
