@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'profil', to: 'pages#profil'
 
   resources :users, only: [:show]
+  resources :boardgames, only: [:new, :create]
   
   resources :events do
     resources :participations, only: [:new, :create]
