@@ -11,5 +11,4 @@ class User < ApplicationRecord
   def ordered_requests
     requests.order('created_at DESC')
   end
-
 end
