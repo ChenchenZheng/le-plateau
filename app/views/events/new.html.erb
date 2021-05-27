@@ -1,13 +1,18 @@
-<h1>This is the new page</h1>
+<div class="container text-center mb-5">
+  <h1>Créer un évènement</h1>
+</div>
 <div class="container w-50">
   <%= simple_form_for @event do |f| %>
-    <%= f.association :boardgame, label: "Name of board game", include_blank: false %>
-    <%= f.input :address %>
-    <%= f.input :description %>
-    <%= f.input :nb_players %>
-    <%= f.input :start_time %>
-    <%= f.input :end_time%>
-    <%= f.button :submit, "Create event" %>
-    <%= link_to "Back", events_path %>
+    <%= f.association :boardgame, label: "A quel jeu voulez-vous jouer?", include_blank: false %>
+
+    <%= f.input :address, label: "Où voulez-vous y jouer?" %>
+    <%= f.input :city, label: "Dans quelle ville?" %>
+
+    <%= f.input :description, label: "Dites quelques mots à propos de votre évènement" %>
+    <%= f.input :nb_players, label: "Combien de joueurs vous faut-il?" %>
+    <%= f.input :start_time, label: "Quand commence l'évènement?" %>
+    <%= f.input :end_time, label: "Quand se termine l'évènement?"%>
+    <%= f.button :submit, "Créer" %>
+    <%= link_to "Retour", events_path, class:'text-decoration-none text-white' %>
   <% end %>
 </div>
