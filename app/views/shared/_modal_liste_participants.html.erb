@@ -1,0 +1,49 @@
+<% if current_user == event.user %>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn-flat" data-toggle="modal" data-target="#exampleModal">
+    Liste des participants
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content black-modal">
+        <div class="modal-header">
+          <h1 class="modal-title mt-5" id="exampleModalLabel">Liste des participants</h1>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row d-flex justify-content-center align-items-center">
+              <div class="col-8">
+                <ul>
+                  <% if current_user.ordered_requests.empty? %>
+                    <h3 class="mt-5">Pas de demandes de participation pour le moment... </h3>
+                  <% else %>
+                    <% current_user.ordered_requests.each do |request|  %>
+                      <li class="participants-details">
+                        <%= image_tag("user.jpg", class:"img_profile_participants") %><%= request.user.first_name %>
+                        <% if request.statut == "Pending" %>
+                          <h6 class="mb-0"><%= link_to "Accepter", accept_participation_path(request) %><%= link_to "Décliner", decline_participation_path(request) %></h6>
+                        <% elsif request.statut == "Accepted"%>
+                          <h6 class ="text-success mb-0"><%= request.statut %><i class="far fa-check-circle"></i></h6>
+                        <% else %>
+                          <h6 class ="text-danger mb-0"><%= request.statut %><i class="far fa-times-circle"></i></h6>
+                        <% end %>
+                      </li>
+                    <% end %>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-center mb-5">
+          <button type="button" class="btn-flat clair" data-dismiss="modal">Retour</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

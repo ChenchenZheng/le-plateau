@@ -1,6 +1,6 @@
 <div class="card">
-  <%= image_tag("explodingkittens.jpg", class:"img_game") %>
-  <%= image_tag("user.jpg", class:"img_profile") %>
+  <%= event.boardgame.photo.attached? ? cl_image_tag(boardgame.photo.key) : image_tag("explodingkittens.jpg" , class:"img_game") %>
+  <%= image_tag("user.jpg", class:"img_profile") %><%= event.user.first_name %>
   <div class="card-info">
     <h3><%= event.boardgame.name %></h3>
     <div class="d-flex align-items-baseline">
@@ -10,11 +10,14 @@
     <p class="event-description"><%= event.description %></p>
     <div class="d-flex align-items-baseline">
       <i class="fas fa-map-marker-alt icon-card blue mr-2"></i>
-      <p class="mr-2">Paris</p>
+      <p class="mr-2"><%= event.address %></p>
       <i class="fas fa-signal icon-card violet mr-2"></i>
       <p class="mr-2"><%= event.boardgame.category %></p>
       <i class="fas fa-users icon-card orange mr-2"></i>
-      <p><%= event.participations.count %> / <%= event.nb_players %></p>
+      <p><%= event.participations.count + 1 %> / <%= event.nb_players %></p>
+      <%= render 'shared/modal_liste_participants', :request => request, :event => event %>
+      <small><%= link_to 'Edit', edit_event_path(event), class:'text-muted' %></small>
+      <small><%= link_to "Delete", event_path(event), method: :delete, data: {confirm: "Êtes-vous sûr ?"}, class: 'text-danger'  %></small>
     </div>
   </div>
 </div>
