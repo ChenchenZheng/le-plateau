@@ -8,7 +8,7 @@
       <p><%= participation.event.start_time > Time.current ? "Dans #{distance_of_time_in_words(participation.event.start_time - Time.current)}" : "Évènement terminé" %></p>
     </div>
     <p class="event-description"><%= participation.event.description %></p>
-    <div class="d-flex align-items-baseline">
+    <div class="event-dashboard-description d-flex align-items-baseline">
       <i class="fas fa-map-marker-alt icon-card blue mr-2"></i>
       <p class="mr-2"><%= participation.event.city %></p>
       <i class="fas fa-signal icon-card violet mr-2"></i>
@@ -16,11 +16,11 @@
       <i class="fas fa-users icon-card orange mr-2"></i>
       <p><%= participation.event.participations.count + 1 %> / <%= participation.event.nb_players %></p>
       <% if participation.statut == "Accepted" %>
-        <h6 class="text-success">Statut: <%= participation.statut %> <i class="far fa-check-circle"></i></h6>
+        <h6 class="text-success">Statut: accepté <i class="far fa-check-circle"></i></h6>
       <% elsif participation.statut == "Declined"%>
-        <h6 class="text-danger mb-0">Statut: <%= participation.statut %> <i class="far fa-times-circle"></i></h6>
+        <h6 class="text-danger mb-0">Statut: décliné <i class="far fa-times-circle"></i></h6>
       <% else %>
-        <h6 class="text-warning mb-0">Statut: <%= participation.statut %> <i class="far fa-clock"></i></h6>
+        <h6 class="text-warning mb-0">Statut: en attente <i class="far fa-clock"></i></h6>
       <% end %>
     </div>
   </div>
