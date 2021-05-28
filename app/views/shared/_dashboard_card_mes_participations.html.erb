@@ -1,7 +1,7 @@
-<div class="card">
+<div class="card-dashboard">
   <%= participation.event.boardgame.photo.attached? ? cl_image_tag(participation.event.boardgame.photo.key) : image_tag("explodingkittens.jpg" , class:"img_game") %>
-  <%= image_tag "user.jpg", class:"img_profile" %><%= participation.event.user.first_name %>
-  <div class="card-info">
+  <%= participation.event.user.photo.attached? ? cl_image_tag(participation.event.user.photo.key, class:"img_profile") : image_tag('user.jpg', class:"img_profile") %>
+  <div class="card-dashboard-info">
     <h3><%= participation.event.boardgame.name %></h3>
     <div class="d-flex align-items-baseline">
       <i class="fas fa-clock icon-card orange mr-2"></i>
@@ -10,14 +10,14 @@
     <p class="event-description"><%= participation.event.description %></p>
     <div class="d-flex align-items-baseline">
       <i class="fas fa-map-marker-alt icon-card blue mr-2"></i>
-      <p class="mr-2"><%= participation.event.address %></p>
+      <p class="mr-2"><%= participation.event.city %></p>
       <i class="fas fa-signal icon-card violet mr-2"></i>
       <p class="mr-2"><%= participation.event.boardgame.category %></p>
       <i class="fas fa-users icon-card orange mr-2"></i>
       <p><%= participation.event.participations.count + 1 %> / <%= participation.event.nb_players %></p>
-      <% if participation.statut == "Accepté" %>
+      <% if participation.statut == "Accepted" %>
         <h6 class="text-success">Statut: <%= participation.statut %> <i class="far fa-check-circle"></i></h6>
-      <% elsif participation.statut == "Decliné"%>
+      <% elsif participation.statut == "Declined"%>
         <h6 class="text-danger mb-0">Statut: <%= participation.statut %> <i class="far fa-times-circle"></i></h6>
       <% else %>
         <h6 class="text-warning mb-0">Statut: <%= participation.statut %> <i class="far fa-clock"></i></h6>

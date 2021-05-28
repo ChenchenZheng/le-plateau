@@ -1,23 +1,27 @@
-<div class="card">
-  <%= event.boardgame.photo.attached? ? cl_image_tag(boardgame.photo.key) : image_tag("explodingkittens.jpg" , class:"img_game") %>
-  <%= image_tag("user.jpg", class:"img_profile") %><%= event.user.first_name %>
-  <div class="card-info">
+<div class="card-dashboard">
+  <%= event.boardgame.photo.attached? ? cl_image_tag(event.boardgame.photo.key) : image_tag("explodingkittens.jpg" , class:"img_game") %>
+  <%= event.user.photo.attached? ? cl_image_tag(event.user.photo.key, class:"img_profile") : image_tag('user.jpg', class:"img_profile") %>
+  <div class="card-dashboard-info">
     <h3><%= event.boardgame.name %></h3>
     <div class="d-flex align-items-baseline">
       <i class="fas fa-clock icon-card orange mr-2"></i>
       <p><%= event.start_time > Time.current ? "Dans #{distance_of_time_in_words(event.start_time - Time.current)}" : "Évènement terminé" %></p>
     </div>
     <p class="event-description"><%= event.description %></p>
-    <div class="d-flex align-items-baseline">
+    <div class="event-dashboard-description d-flex align-items-baseline">
       <i class="fas fa-map-marker-alt icon-card blue mr-2"></i>
-      <p class="mr-2"><%= event.address %></p>
+      <p class="mr-2"><%= event.city %></p>
       <i class="fas fa-signal icon-card violet mr-2"></i>
       <p class="mr-2"><%= event.boardgame.category %></p>
       <i class="fas fa-users icon-card orange mr-2"></i>
       <p><%= event.participations.count + 1 %> / <%= event.nb_players %></p>
-      <%= render 'shared/modal_liste_participants', :request => request, :event => event %>
-      <small><%= link_to 'Edit', edit_event_path(event), class:'text-muted' %></small>
-      <small><%= link_to "Delete", event_path(event), method: :delete, data: {confirm: "Êtes-vous sûr ?"}, class: 'text-danger'  %></small>
+      <div>
+        <%= render 'shared/modal_liste_participants', :request => request, :event => event %>
+        <div class="dashboard_edit_delete">
+          <small><%= link_to 'Edit', edit_event_path(event), class:'text-muted' %></small>
+          <small><%= link_to "Delete", event_path(event), method: :delete, data: {confirm: "Êtes-vous sûr ?"}, class: 'text-danger'  %></small>
+        </div>
+      </div>
     </div>
   </div>
 </div>
