@@ -31,7 +31,7 @@
       <% else %>
         <li>Organisé <%= @event.user.events.count %> jeux</li>
       <% end %>
-     
+
       <% if @event.user.participations.select { |p| p.statut == "Accepted"}.count == 0 %>
         <li>Aucune participation</li>
       <% elsif @event.user.participations.select { |p| p.statut == "Accepted"}.count == 1 %>
