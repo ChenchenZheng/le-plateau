@@ -49,6 +49,12 @@ gem 'rails-i18n'
 gem 'rails_admin', '~> 2.0'
 gem 'rails_admin-i18n'
 
+# Add super graphe
+gem "chartkick"
+
+# Add group by date gem
+gem 'groupdate'
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'

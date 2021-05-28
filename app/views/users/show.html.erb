@@ -1,2 +1,9 @@
 <h1 class="heading-user"><%= current_user == User.find(params[:id]) ? "Mon profil" : "Profil de #{@user.first_name}"%></h1>
-<%= render 'user_infos', user: @user %>
+
+<div class="d-flex justify-content-left align-items-start">
+  <%= render 'user_infos', user: @user, class:"mr-5" %>
+  <div class="graphes ml-5">
+    <%= line_chart @user.participations.group_by_day(:created_at).count, width: "500px", height: "500px", title: "Nombre d'évènements participés par jour", colors: ["#F65868", "#F65868"], download: {background: "#F65868"} %>
+    <%= line_chart @user.events.group_by_day(:created_at).count, width: "500px", height: "500px", title: "Nombre d'évènements participés par jour", colors: ["#F65868", "#F65868"], download: {background: "#F65868"} %>
+  </div>
+</div>
