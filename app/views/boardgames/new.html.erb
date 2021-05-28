@@ -1,0 +1,12 @@
+ <h1>Create a new boardgame</h1>
+  <%= simple_form_for @boardgame do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description, as: :string  %>
+    <%= f.input :category %>
+    <%= f.input :level %>
+    <%= f.input :duration %>
+    <%= f.input :photo, as: :file %>
+    <div class="form-actions">
+      <%= f.button :submit, "Create boardgame", class: "btn-flat mt-3" %>
+    </div>
+  <% end %>

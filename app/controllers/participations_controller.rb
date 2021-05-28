@@ -32,12 +32,10 @@ class ParticipationsController < ApplicationController
     redirect_to dashboard_path(tab: params[:tab])
   end
 
-
   private
 
   def set_participation
     @participation = Participation.find(params[:id])
     authorize @participation
   end
-
 end

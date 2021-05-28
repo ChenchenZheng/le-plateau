@@ -1,0 +1,9 @@
+<h1>Edit your profile</h1>
+  <%= simple_form_for @user do |f| %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name  %>
+    <%= f.input :birth_date %>
+    <%= f.input :email %>
+    <%= f.input :photo, as: :file%>
+    <%= f.button :submit, "Edit profile", class: "btn btn-flat" %>
+  <% end %>

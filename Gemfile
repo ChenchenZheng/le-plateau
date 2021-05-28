@@ -31,6 +31,8 @@ gem 'pg_search', '~> 2.3.0'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise'
+gem 'devise-i18n'
+
 gem 'pundit'
 
 gem 'autoprefixer-rails', '10.2.5'
@@ -42,6 +44,10 @@ gem 'geocoder'
 gem 'cloudinary', '~> 1.16.0'
 
 gem 'rails-i18n'
+
+# Admin page pour les dev
+gem 'rails_admin', '~> 2.0'
+gem 'rails_admin-i18n'
 
 group :development, :test do
   gem 'pry-byebug'
