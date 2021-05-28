@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   def index
     @events = policy_scope(Event).order(created_at: :desc)
     if params[:location].present?
-      @events = @events.near(params[:location], 20)
+      @events = @events.near(params[:location], 10)
     end
     if params[:category].present?
       sql_query = " \
