@@ -19,7 +19,7 @@
 }
 
 .background-image {
-  background-image: linear-gradient(to bottom, $background-black-clair, $background-black-clair), url("explodingkittens.jpg");
+  background-image: linear-gradient(to bottom, $background-black-clair, $background-black-clair);
   height: 350px;
-  background-size:cover;
+  background-size: cover;
 }

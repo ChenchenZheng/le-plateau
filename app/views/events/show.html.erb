@@ -1,4 +1,4 @@
-<div class="row background-image d-flex justify-content-center align-items-center">
+<div class="row background-image d-flex justify-content-center align-items-center" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= @event.boardgame.photo.attached? ? cl_image_path(@event.boardgame.photo.key) : asset_path('explodingkittens.jpg') %>')">
   <h1 class="mb-5 text-center"><%= @event.boardgame.name %></h1>
 </div>
 
@@ -14,7 +14,7 @@
       <i class="fas fa-calendar-alt icon-card pink mr-2"></i>
       <p class="mr-2"><%= @event.start_time.strftime("%e %b %l:%M") %> - <%= @event.end_time.strftime("%H:%M") %></p>
       <i class="fas fa-users icon-card orange mr-2"></i>
-      <p class="mr-2"> 1/<%= @event.nb_players %> joueurs</p>
+      <p class="mr-2"> 1/<%= @event.nb_players %></p>
       <i class="fas fa-map-marker-alt icon-card blue mr-2"></i>
       <p class="mr-2"><%= @event.address %></p>
     </div>

@@ -1,5 +1,5 @@
 <div class="card">
-  <%= image_tag "explodingkittens.jpg", class:"img_game" %>
+  <%= event.boardgame.photo.attached? ? cl_image_tag(event.boardgame.photo.key, class:"img_game") : image_tag('explodingkittens.jpg', class:"img_game") %>
   <%= event.user.photo.attached? ? cl_image_tag(event.user.photo.key, class:"img_profile") : image_tag('user.jpg', class:"img_profile") %>
   <div class="card-info">
     <h3><%= event.boardgame.name %></h3>

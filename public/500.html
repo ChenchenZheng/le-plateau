@@ -4,63 +4,185 @@
   <title>We're sorry, but something went wrong (500)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
+    :root {
+    --size: 20; /*size*/
+    --background-color: #1F1D2B;
+    --color-5: #F95969;
+    --color-0-l: #FAD13D;
+    --color-0-r: #3EC4EF;
+    --animation-speed: 4s;
+    --play-state: running;
+    --emoji: url("https://upload.wikimedia.org/wikipedia/commons/1/11/Twemoji_1f605.svg");
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--background-color);
+  }
+
+  .c {
+    position: absolute;
+    width: auto;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: calc(var(--size) / 5 * 1vw);
+  }
+
+  .g {
+    position: relative;
+    width: calc(var(--size) * 1vw);
+    height: calc(var(--size) * 1vw);
     margin: 0;
   }
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
+  .f {
+    font-size: calc(var(--size) * 1.5vw);
+    font-family: "Nova Oval", cursive;
+    line-height: calc(var(--size) * 1vw);
+    color: var(--color-5);
   }
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  .m {
+    position: absolute;
+    width: 100%;
+    height: 100%;
   }
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
+  .p {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    overflow: hidden;
   }
 
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  .p-1 {
+    top: 0;
+    left: 0;
+    transform-origin: bottom right;
+    transform: rotateZ(0deg);
+    animation: var(--animation-speed) infinite var(--play-state) p-1-a;
+  }
+
+  .p-2 {
+    top: 0;
+    left: 50%;
+    transform-origin: bottom left;
+    transform: rotateZ(0deg);
+    animation: var(--animation-speed) infinite var(--play-state) p-2-a;
+  }
+
+  .p::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    border-radius: 50%;
+  }
+
+  .p-1::before {
+    top: 0;
+    left: 0;
+    box-shadow: inset 0 0 0 calc(var(--size) / 5 * 1vw) var(--color-0-l);
+  }
+
+  .p-2::before {
+    top: 0;
+    left: -100%;
+    box-shadow: inset 0 0 0 calc(var(--size) / 5 * 1vw) var(--color-0-r);
+  }
+
+  .t {
+    position: absolute;
+    width: calc((var(--size) / 5 - 1) * 1vw);
+    height: calc(100% - 1vw);
+    top: 50%;
+    left: 50%;
+    transform-origin: center center;
+    transform: translateX(-50%) translateY(-50%) rotateZ(0deg);
+    background: var(--emoji);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    animation: var(--animation-speed) linear infinite var(--play-state) t-a;
+  }
+
+  @keyframes t-a {
+    0% {
+      transform: translateX(-50%) translateY(-50%) rotateZ(0deg);
+    }
+    50% {
+      transform: translateX(-50%) translateY(-50%) rotateZ(-180deg);
+    }
+    0% {
+      transform: translateX(-50%) translateY(-50%) rotateZ(-360deg);
+    }
+  }
+
+  @keyframes p-1-a {
+    0% {
+      transform: rotateZ(0deg);
+    }
+    25% {
+      transform: rotateZ(-180deg);
+    }
+    50% {
+      transform: rotateZ(-180deg);
+    }
+    75% {
+      transform: rotateZ(-360deg);
+    }
+    100% {
+      transform: rotateZ(-360deg);
+    }
+  }
+
+  @keyframes p-2-a {
+    0% {
+      transform: rotateZ(0deg);
+    }
+    25% {
+      transform: rotateZ(0deg);
+    }
+    50% {
+      transform: rotateZ(-180deg);
+    }
+    75% {
+      transform: rotateZ(-180deg);
+    }
+    100% {
+      transform: rotateZ(-360deg);
+    }
   }
   </style>
 </head>
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/500.html -->
+<body>
   <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.</h1>
+    <div class="c">
+
+      <div class="g f">5</div>
+    
+      <div class="g">
+        <div class="m">
+          <div class="p p-1"></div>
+          <div class="p p-2"></div>
+          <div class="t"></div>
+        </div>
+      </div>
+    
+      <div class="g">
+        <div class="m">
+          <div class="p p-1"></div>
+          <div class="p p-2"></div>
+          <div class="t"></div>
+        </div>
+      </div>
+    
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
 </body>
 </html>
