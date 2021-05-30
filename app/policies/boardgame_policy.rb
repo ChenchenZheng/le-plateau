@@ -12,4 +12,12 @@ class BoardgamePolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def import_boardgame?
+    true
+  end
+
+  def scan_barcode?
+    true
+  end
 end

@@ -7,7 +7,10 @@ Rails.application.routes.draw do
 
   get 'dashboard', to: 'pages#dashboard'
 
-  resources :boardgames, only: [:new, :create]
+  resources :boardgames, only: [:new, :create, :show] do
+    get :scan_barcode, on: :collection
+    post :import_boardgame, on: :collection
+  end
   
   resources :events do
     resources :participations, only: [:new, :create]
