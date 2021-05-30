@@ -26,10 +26,11 @@ class BoardgamesController < ApplicationController
     url = "https://api.barcodelookup.com/v2/products?barcode=#{params[:barcode]}&formatted=y&key=h97sio5mnasz963blnb769goh2st2b"
     boardgame_serialized = URI.open(url).read
     boardgame = JSON.parse(boardgame_serialized)
-    @boardgame = Boardgame.find_or_initialize_by(barcode: params[:barcode], name: boardgame["products"][0]["product_name"], description: boardgame["products"][0]["description"], category: boardgame["products"][0]["category"])
+    boardgame = boardgame["products"][0]
+    @boardgame = Boardgame.find_or_initialize_by(barcode: params[:barcode], name: boardgame["product_name"], description: boardgame["description"], category: boardgame["category"])
     authorize @boardgame
     if @boardgame.new_record?
-      redirect_to new_boardgame_path(barcode: params[:barcode], name: boardgame["products"][0]["product_name"], description: boardgame["products"][0]["description"], category: boardgame["products"][0]["category"])
+      redirect_to new_boardgame_path(barcode: params[:barcode], name: boardgame["product_name"], description: boardgame["description"], category: boardgame["category"])
     else
       redirect_to @boardgame
     end
