@@ -1,9 +1,17 @@
 <h1 class="heading-user"><%= current_user == User.find(params[:id]) ? "Mon profil" : "Profil de #{@user.first_name}"%></h1>
 
-<div class="d-flex justify-content-left align-items-start">
-  <%= render 'user_infos', user: @user, class:"mr-5" %>
-  <div class="graphes ml-5">
-    <%= line_chart @user.participations.group_by_day(:created_at).count, width: "500px", height: "500px", title: "Nombre d'évènements participés par jour", colors: ["#F65868", "#F65868"], download: {background: "#F65868"} %>
-    <%= line_chart @user.events.group_by_day(:created_at).count, width: "500px", height: "500px", title: "Nombre d'évènements participés par jour", colors: ["#F65868", "#F65868"], download: {background: "#F65868"} %>
-  </div>
+<div class="d-flex justify-content-between align-items-start">
+  <%= render 'user_infos', user: @user %>
+    <%= line_chart @user.participations.group_by_day(:created_at).count, width: "350px", height: "350px", colors: ["#F95969"], title: "Nombre d'évènements participés par jour",
+      library: {
+        chart: {backgroundColor: "#242836"},
+        title: {style: {color:"#FFF"}}
+      }
+     %>
+    <%= line_chart @user.events.group_by_day(:created_at).count, width: "350px", height: "350px", colors: ["#3EC4EF"], title: "Nombre d'évènements créés par jour",
+    library: {
+        chart: {backgroundColor: "#242836"},
+        title: {style: {color:"#FFF"}}
+      }
+    %>
 </div>
