@@ -1,0 +1,13 @@
+#barcode-scanner {
+  width: 400px;
+  height: 200px;
+
+  canvas.drawingBuffer, video.drawingBuffer {
+   display: none;
+  }
+
+  canvas, video {
+    width: 100%;
+    height: auto;
+  }
+}

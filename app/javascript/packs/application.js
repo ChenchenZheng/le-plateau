@@ -11,7 +11,6 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-
 // ----------------------------------------------------
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
@@ -23,7 +22,7 @@ import "bootstrap";
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete} from '../plugins/init_autocomplete';
 import { dynamicTabs } from '../components/onglets';
-
+import { load_quagga } from '../plugins/init_quagga'
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -33,6 +32,7 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initAutocomplete();
   dynamicTabs();
+  load_quagga();
 });
 
 import "controllers"
