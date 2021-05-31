@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users
+  # devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   resources :users, only: [:show, :update]
 
   root to: 'pages#home'
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
     get :scan_barcode, on: :collection
     post :import_boardgame, on: :collection
   end
-  
+
   resources :events do
     resources :participations, only: [:new, :create]
   end

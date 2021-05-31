@@ -6,7 +6,9 @@
     <%= @user.photo.attached? ? cl_image_tag(@user.photo.key) : image_tag('user.jpg') %>
     <h5 class="text-center"><%= @user.first_name %> <%= @user.last_name %></h5>
     <ul>
-      <li><%= Time.now.year - @user.birth_date.year %> ans</li>
+      <% if @user.birth_date %>
+        <li><%= Time.now.year - @user.birth_date.year %> ans</li>
+      <% end %>
       <% if @user.events.count == 0 || @user.events.count == 1 %>
         <li>Organisé <%= @user.events.count %> jeu</li>
       <% else %>
