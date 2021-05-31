@@ -1,5 +1,7 @@
 <div class="container text-center mb-5">
   <h1 class="mt-5 mb-5">Créer un évènement de jeu de société</h1>
+  <p>Vous n'avez pas trouvé votre jeu de société dans la liste ?</p>
+  <%= link_to "Scanner le codebar de votre jeu", scan_barcode_boardgames_path, class:"btn-flat clair" %>
 </div>
 <div class="container w-50">
   <%= simple_form_for @event do |f| %>

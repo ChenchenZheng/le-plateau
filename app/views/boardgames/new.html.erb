@@ -1,6 +1,7 @@
  <h1>Create a new boardgame</h1>
   <%= simple_form_for @boardgame do |f| %>
     <%= f.input :name %>
+    <%= f.input :barcode %>
     <%= f.input :description, as: :string  %>
     <%= f.input :category %>
     <%= f.input :level %>
