@@ -1,8 +1,13 @@
 <% if current_user == user %>
   <!-- Button trigger modal -->
-  <button type="button" class="btn-flat" data-toggle="modal" data-target="#exampleModal">
+  <button type="button" class="btn-flat position-relative" data-toggle="modal" data-target="#exampleModal">
     Liste des participants
+    <% if current_user.ordered_requests.where(statut: "Pending").count >=1 %>
+      <i class="fas fa-clock icon-card orange mr-2 position-absolute"></i>
+    <% end %>
   </button>
+
+
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -24,15 +29,15 @@
                   <% else %>
                     <% current_user.ordered_requests.each do |request|  %>
                       <li class="participants-details">
-                        <%= request.user.photo.attached? ? cl_image_tag(request.user.photo.key, class:"img_profile_participants") : image_tag('user.jpg', class:"img_profile_participants") %><%= request.user.first_name %>
+                        <%= request.user.photo.attached? ? cl_image_tag(request.user.photo.key, class:"img_profile_participants") : image_tag('user.jpg', class:"img_profile_participants") %><strong><%= request.user.first_name %></strong>
                         <% if request.statut == "Pending" %>
-                          <h6 class="mb-0"><%= link_to "Accepter", accept_participation_path(request) %><%= link_to "Décliner", decline_participation_path(request) %></h6>
+                          <h6 class="mb-0"><%= link_to "Accepter", accept_participation_path(request) %> <%= link_to "Décliner", decline_participation_path(request) %></h6>
                         <% elsif request.statut == "Accepted"%>
                           <h6 class ="text-success mb-0">Accepté <i class="far fa-check-circle"></i></h6>
+                          <%= link_to "X", decline_participation_path(request), data: {confirm: "Êtes-vous sûr de vouloir changer le statut et décliner la participation de #{request.user.first_name}?"}, class: 'text-info' %></small>
                         <% else %>
                           <h6 class ="text-danger mb-0">Décliné <i class="far fa-times-circle"></i></h6>
                         <% end %>
-                        <%= link_to "X", participation_path(request), method: :delete, data: {confirm: "Êtes-vous sûr ?"}, class: 'text-danger'  %></small>
                       </li>
                     <% end %>
                   <% end %>

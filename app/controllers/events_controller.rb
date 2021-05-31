@@ -29,6 +29,7 @@ class EventsController < ApplicationController
 
   def show
     @participation = Participation.new
+    @current_user_participation = Participation.where(user_id: current_user.id, event_id: @event.id).first
   end
 
   def new

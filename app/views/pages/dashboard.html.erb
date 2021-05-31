@@ -22,7 +22,7 @@
     </div>
     <div class="content-dashboard-cards">
       <% current_user.events.each do |event| %>
-        <%= render 'shared/dashboard_card_mes_events', :user => event.user, :event => event, :participation => @participation, :boardgame => @boardgame %>
+        <%= render 'shared/dashboard_card_mes_events', event: event, participation: @participation, boardgame: @boardgame %>
       <% end %>
     </div>
   </div>
@@ -39,7 +39,7 @@
     </div>
     <div class="content-dashboard-cards">
       <% current_user.participations.each do |participation| %>
-        <%= render 'shared/dashboard_card_mes_participations', :user => @user, :event => @event, :participation => participation, :boardgame => @boardgame %>
+        <%= render 'shared/dashboard_card_mes_participations', event: participation.event, participation: participation, boardgame: @boardgame %>
       <% end %>
     </div>
   </div>

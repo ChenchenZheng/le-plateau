@@ -16,9 +16,9 @@
       <i class="fas fa-signal icon-card violet mr-2"></i>
       <p class="mr-2"><%= event.boardgame.category %></p>
       <i class="fas fa-users icon-card orange mr-2"></i>
-      <p><%= event.participations.count + 1 %> / <%= event.nb_players %></p>
+      <p><%= event.participations.select { |p| p.statut == "Accepted" }.count + 1 %> / <%= event.nb_players %></p>
       <div>
-        <%= render 'shared/modal_liste_participants', :user => event.user, :request => @request, :event => @event, :participation => event.participations, :boardgame => @boardgame %>
+        <%= render 'shared/modal_liste_participants', user: event.user, request: @request, event: @event, participation: event.participations, boardgame: @boardgame %>
         <div class="dashboard_edit_delete">
           <small><%= link_to 'Éditer', edit_event_path(event), class:'btn_edit_event' %></small>
           <small><%= link_to "Supprimer", event_path(event, page:'dashboard'), method: :delete, data: {confirm: "Êtes-vous sûr ?"}, class: 'text-danger'  %></small>

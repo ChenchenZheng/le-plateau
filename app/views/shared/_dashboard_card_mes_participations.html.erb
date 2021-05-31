@@ -1,22 +1,22 @@
-<div class="card-dashboard">
+<div class="card-dashboard" style="position:relative;">
   <%= link_to "", event_path(event), class:'text-white text-decoration-none link_show_dashboard' %>
 
-  <%= participation.event.boardgame.photo.attached? ? cl_image_tag(participation.event.boardgame.photo.key, class:"img_game") : image_tag("explodingkittens.jpg" , class:"img_game") %>
-  <%= participation.event.user.photo.attached? ? cl_image_tag(participation.event.user.photo.key, class:"img_profile") : image_tag('user.jpg', class:"img_profile") %>
+  <%= event.boardgame.photo.attached? ? cl_image_tag(event.boardgame.photo.key, class:"img_game") : image_tag("explodingkittens.jpg" , class:"img_game") %>
+  <%= event.user.photo.attached? ? cl_image_tag(event.user.photo.key, class:"img_profile") : image_tag('user.jpg', class:"img_profile") %>
   <div class="card-dashboard-info">
-    <h3><%= participation.event.boardgame.name %></h3>
+    <h3><%= event.boardgame.name %></h3>
     <div class="d-flex align-items-baseline">
       <i class="fas fa-clock icon-card orange mr-2"></i>
-      <p><%= participation.event.start_time > Time.current ? "Dans #{distance_of_time_in_words(participation.event.start_time - Time.current)}" : "Évènement terminé" %></p>
+      <p><%= event.start_time > Time.current ? "Dans #{distance_of_time_in_words(event.start_time - Time.current)}" : "Évènement terminé" %></p>
     </div>
-    <p class="event-description"><%= participation.event.description %></p>
+    <p class="event-description"><%= event.description %></p>
     <div class="event-dashboard-description d-flex align-items-baseline">
       <i class="fas fa-map-marker-alt icon-card blue mr-2"></i>
-      <p class="mr-2"><%= participation.event.city %></p>
+      <p class="mr-2"><%= event.city %></p>
       <i class="fas fa-signal icon-card violet mr-2"></i>
-      <p class="mr-2"><%= participation.event.boardgame.category %></p>
+      <p class="mr-2"><%= event.boardgame.category %></p>
       <i class="fas fa-users icon-card orange mr-2"></i>
-      <p><%= participation.event.participations.count + 1 %> / <%= participation.event.nb_players %></p>
+      <p><%= event.participations.count + 1 %> / <%= event.nb_players %></p>
       <% if participation.statut == "Accepted" %>
         <h6 class="text-success">Statut: accepté <i class="far fa-check-circle"></i></h6>
       <% elsif participation.statut == "Declined"%>

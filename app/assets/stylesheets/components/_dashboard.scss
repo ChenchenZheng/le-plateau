@@ -67,7 +67,7 @@
 
 .participants-details {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 }
 
@@ -151,4 +151,13 @@
 .btn_edit_event {
   color: white;
   padding-right: 10px;
+}
+
+.btn_accepte {
+  margin-right: 15px;
+}
+
+i.fas.fa-clock.icon-card.orange.mr-2.position-absolute {
+  top: 0;
+  right: 0;
 }
