@@ -9,11 +9,11 @@
     </div>
     <p class="event-description"><%= event.description %></p>
     <div class="d-flex align-items-baseline event-icons">
-      <i class="fas fa-map-marker-alt icon-card blue mr-2"></i>
-      <p class="mr-2"> <%= event.city %></p>
-      <i class="fas fa-signal icon-card violet mr-2"></i>
-      <p class="mr-2"><%= event.boardgame.category %></p>
-      <i class="fas fa-users icon-card orange mr-2"></i>
+      <i class="fas fa-map-marker-alt icon-card blue"></i>
+      <p class="mr-4"> <%= event.city %></p>
+      <i class="fas fa-signal icon-card violet"></i>
+      <p class="mr-4"><%= event.boardgame.category %></p>
+      <i class="fas fa-users icon-card orange"></i>
       <p><%= event.participations.select { |p| p.statut == "Accepted" }.count + 1 %> / <%= event.nb_players %></p>
     </div>
   </div>
