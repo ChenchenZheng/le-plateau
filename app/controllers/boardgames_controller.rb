@@ -23,7 +23,7 @@ class BoardgamesController < ApplicationController
   end
 
   def import_boardgame
-    url = "https://api.barcodelookup.com/v2/products?barcode=#{params[:barcode]}&formatted=y&key=h97sio5mnasz963blnb769goh2st2b"
+    url = "https://api.barcodelookup.com/v2/products?barcode=#{params[:barcode]}&formatted=y&key=#{ENV["BARCODELOOKUP_KEY"]}"
     boardgame_serialized = URI.open(url).read
     boardgame = JSON.parse(boardgame_serialized)
     boardgame = boardgame["products"][0]

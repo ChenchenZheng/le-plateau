@@ -27,11 +27,16 @@ function load_quagga(){
           code = order_by_occurrence(last_result)[0];
           last_result = [];
           Quagga.stop();
-          $.ajax({
+          var call = $.ajax({
             type: "POST",
             url: '/boardgames/import_boardgame',
             data: { barcode: code }
           });
+          call.fail(function(){
+            alert('Raprochez le jeu et augmentez la luminosité de la condition');
+            window.location = window.location.href + "#refresh";
+            window.location.reload();
+          })
         }
       });
     }
