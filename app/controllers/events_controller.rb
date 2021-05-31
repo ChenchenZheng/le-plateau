@@ -29,6 +29,7 @@ class EventsController < ApplicationController
 
   def show
     @participation = Participation.new
+    @current_user_participation = Participation.where(user_id: current_user.id, event_id: @event.id).first
   end
 
   def new
@@ -59,7 +60,11 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    redirect_to events_path
+    if params[:page] == 'dashboard'
+      redirect_to dashboard_path
+    else
+      redirect_to events_path
+    end
   end
 
   private

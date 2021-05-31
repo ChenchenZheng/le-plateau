@@ -1,5 +1,5 @@
 class ParticipationsController < ApplicationController
-  before_action :set_participation, only: %i[accept decline]
+  before_action :set_participation, only: %i[accept decline destroy]
 
   def new
     @participation = Participation.new
@@ -30,6 +30,11 @@ class ParticipationsController < ApplicationController
     @participation.statut = "Declined"
     @participation.save
     redirect_to dashboard_path(tab: params[:tab])
+  end
+
+  def destroy
+    @participation.destroy
+    redirect_to events_path
   end
 
   private

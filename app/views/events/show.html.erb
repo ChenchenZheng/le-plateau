@@ -5,16 +5,33 @@
 <div class="mt-5 d-flex justify-content-between">
   <div class="event-details">
     <div class="cta-group d-flex justify-content-between align-items-center mb-4">
-
       <h2>Description de l’événement</h2>
-      <%= render 'shared/modal_rejoindre' %>
+      <% if current_user == @event.user %>
+        <%= render 'shared/modal_liste_participants', user: @event.user, request: @request, event: @event, participation: @event.participations, boardgame: @boardgame %>
+      <% else %>
+        <div>
+          <% if @event.users.include?(current_user) %>
+            <% if @current_user_participation.statut == "Declined" %>
+              <h6 class ="text-danger mb-0">Décliné <i class="far fa-times-circle"></i></h6>
+            <% elsif @current_user_participation.statut == "Accepted"%>
+              <h6 class ="text-success mb-0">Accepté <i class="far fa-check-circle"></i></h6>
+              <%= link_to "Annuler ma participation", participation_path(@current_user_participation), method: :delete, data: {confirm: "Êtes-vous sûr ?"}, class: 'text-danger' %>
+            <% elsif @current_user_participation.statut == "Pending"%>
+              <h6 class="text-warning mb-0">Statut: en attente <i class="far fa-clock"></i></h6>
+              <%= link_to "Annuler ma participation", participation_path(@current_user_participation), method: :delete, data: {confirm: "Êtes-vous sûr ?"}, class: 'text-danger' %>
+            <% end %>
+          <% else %>
+            <%= render 'shared/modal_rejoindre' %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
 
     <div class="d-flex align-items-baseline">
       <i class="fas fa-calendar-alt icon-card pink mr-2"></i>
       <p class="mr-2"><%= @event.start_time.strftime("%e %b %l:%M") %> - <%= @event.end_time.strftime("%H:%M") %></p>
       <i class="fas fa-users icon-card orange mr-2"></i>
-      <p class="mr-2"> 1/<%= @event.nb_players %></p>
+      <p class="mr-2"><%= @event.participations.select { |p| p.statut == "Accepted" }.count + 1 %> / <%= @event.nb_players %></p>
       <i class="fas fa-map-marker-alt icon-card blue mr-2"></i>
       <p class="mr-2"><%= @event.address %></p>
     </div>
