@@ -22,24 +22,26 @@
   </div>
 
   <div class="event-profile mt-5">
-    <%= @event.user.photo.attached? ? cl_image_tag(@event.user.photo.key) : image_tag('user.jpg') %>
-    <h5 class="text-center"><%= @event.user.first_name %> <%= @event.user.last_name %></h5>
-    <ul>
-      <li><%= Time.now.year - @event.user.birth_date.year %> ans</li>
-      <% if @event.user.events.count == 0 || @event.user.events.count == 1 %>
-        <li>Organisé <%= @event.user.events.count %> jeu</li>
-      <% else %>
-        <li>Organisé <%= @event.user.events.count %> jeux</li>
-      <% end %>
+    <%= link_to user_path(@event.user), class:'text-white text-decoration-none' do %>
+        <%= @event.user.photo.attached? ? cl_image_tag(@event.user.photo.key) : image_tag('user.jpg') %>
+        <h5 class="text-center"><%= @event.user.first_name %> <%= @event.user.last_name %></h5>
+        <ul>
+          <li><%= Time.now.year - @event.user.birth_date.year %> ans</li>
+          <% if @event.user.events.count == 0 || @event.user.events.count == 1 %>
+            <li>Organisé <%= @event.user.events.count %> jeu</li>
+          <% else %>
+            <li>Organisé <%= @event.user.events.count %> jeux</li>
+          <% end %>
 
-      <% if @event.user.participations.select { |p| p.statut == "Accepted"}.count == 0 %>
-        <li>Aucune participation</li>
-      <% elsif @event.user.participations.select { |p| p.statut == "Accepted"}.count == 1 %>
-        <li>Participé à 1 jeu</li>
-      <% else %>
-        <li>Participé aux <%= @event.user.participations.select { |p| p.statut == "Accepted"}.count %> jeux</li>
-      <% end %>
-    </ul>
+          <% if @event.user.participations.select { |p| p.statut == "Accepted"}.count == 0 %>
+            <li>Aucune participation</li>
+          <% elsif @event.user.participations.select { |p| p.statut == "Accepted"}.count == 1 %>
+            <li>Participé à 1 jeu</li>
+          <% else %>
+            <li>Participé aux <%= @event.user.participations.select { |p| p.statut == "Accepted"}.count %> jeux</li>
+          <% end %>
+        </ul>
+    <% end %>
   </div>
 </div>
 

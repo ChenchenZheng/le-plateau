@@ -52,11 +52,10 @@
      data-mapbox-api-key="pk.eyJ1IjoiY2hlbmNoZW56aGVuZyIsImEiOiJja295NnY5eTcwZnJ2MnJtY25kaHFzbDUxIn0.9_qrw3_583KOaSicsh0hRA">
 </div>
 
-
 <div class="cards">
   <% @events.each do |event| %>
-    <%= link_to event_path(event), class:' text-white text-decoration-none' do %>
-      <%= render 'shared/card' , :event => event %>
+    <%= link_to event_path(event), class:'text-white text-decoration-none' do %>
+      <%= render 'shared/card' , event: event %>
     <% end %>
   <% end %>
 </div>
