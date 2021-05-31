@@ -8,14 +8,14 @@
 user1 = User.create!(
   first_name: "Jean-Pierre",
   last_name: "Pernaud",
-  email: "jean-pierre.pernaud@tf1.fr",
+  email: "jean-pierre.pernauddd@tf1.fr",
   password: "123456"
 )
 
 user2 = User.create!(
   first_name: "Claire",
   last_name: "Chazal",
-  email: "Claire.chazal@tf1.fr",
+  email: "Claire.chazalll@tf1.fr",
   password: "123456"
 )
 
@@ -42,3 +42,4 @@ loup_garou = Boardgame.create!(
   level: "Difficile",
   duration: 2
 )
+

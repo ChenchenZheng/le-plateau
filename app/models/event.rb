@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
   belongs_to :user
   belongs_to :boardgame
+  has_one :chatroom
   has_many :participations
   has_many :users, through: :participations
   validates :address, presence: true
