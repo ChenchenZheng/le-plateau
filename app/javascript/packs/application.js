@@ -22,7 +22,8 @@ import "bootstrap";
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete} from '../plugins/init_autocomplete';
 import { dynamicTabs } from '../components/onglets';
-import { load_quagga } from '../plugins/init_quagga'
+import { load_quagga } from '../plugins/init_quagga';
+import { addClassActive } from '../components/navbar'
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -33,6 +34,7 @@ document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
   dynamicTabs();
   load_quagga();
+  addClassActive();
 });
 
 import "controllers"
