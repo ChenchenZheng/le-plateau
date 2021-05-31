@@ -1,4 +1,6 @@
 <div class="card-dashboard">
+  <%= link_to "", event_path(event), class:'text-white text-decoration-none link_show_dashboard' %>
+
   <%= participation.event.boardgame.photo.attached? ? cl_image_tag(participation.event.boardgame.photo.key, class:"img_game") : image_tag("explodingkittens.jpg" , class:"img_game") %>
   <%= participation.event.user.photo.attached? ? cl_image_tag(participation.event.user.photo.key, class:"img_profile") : image_tag('user.jpg', class:"img_profile") %>
   <div class="card-dashboard-info">
@@ -23,5 +25,8 @@
         <h6 class="text-warning mb-0">Statut: en attente <i class="far fa-clock"></i></h6>
       <% end %>
     </div>
+      <% if participation.statut == "Accepted" %>
+        <small><%= link_to "Annuler ma participation", participation_path(participation), method: :delete, data: {confirm: "Êtes-vous sûr ?"}, class: 'text-danger'  %></small>
+      <% end %>
   </div>
 </div>

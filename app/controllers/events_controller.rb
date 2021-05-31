@@ -59,7 +59,11 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    redirect_to events_path
+    if params[:page] == 'dashboard'
+      redirect_to dashboard_path
+    else
+      redirect_to events_path
+    end
   end
 
   private

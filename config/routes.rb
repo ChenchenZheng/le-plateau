@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'pages#dashboard'
 
   resources :boardgames, only: [:new, :create]
-  
+
   resources :events do
-    resources :participations, only: [:new, :create]
+    resources :participations, only: [:new, :create, :destroy]
   end
 
   resources :participations, only: [:edit, :update, :destroy] do

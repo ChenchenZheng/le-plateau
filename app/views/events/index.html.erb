@@ -55,7 +55,7 @@
 
 <div class="cards">
   <% @events.each do |event| %>
-    <%= link_to event_path(event), class:' text-white text-decoration-none' do %>
+    <%= link_to event_path(event), class:'text-white text-decoration-none' do %>
       <%= render 'shared/card' , :event => event %>
     <% end %>
   <% end %>

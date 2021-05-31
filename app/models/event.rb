@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
   belongs_to :user
   belongs_to :boardgame
-  has_many :participations
+  has_many :participations, dependent: :destroy
   has_many :users, through: :participations
   validates :address, presence: true
   validates :description, length: { minimum: 20 }, presence: true
