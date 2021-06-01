@@ -7,6 +7,8 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
@@ -19,11 +21,15 @@ ActiveStorage.start()
 // External imports
 import "chartkick/highcharts";
 import "bootstrap";
+import "controllers"
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete} from '../plugins/init_autocomplete';
 import { dynamicTabs } from '../components/onglets';
-import { load_quagga } from '../plugins/init_quagga';
-import { addClassActive } from '../components/navbar'
+import {initChatroomCable} from '../channels/chatroom_channel';
+import { load_quagga } from '../plugins/init_quagga'
+import { addClassActive } from '../components/navbar';
+import { initFlatpickr } from "../plugins/flatpickr";
+
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -34,7 +40,8 @@ document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
   dynamicTabs();
   load_quagga();
+  initChatroomCable();
   addClassActive();
+  initFlatpickr();
 });
 
-import "controllers"

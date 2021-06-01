@@ -1,0 +1,19 @@
+<h1>Chatroom of <span class="span-result"> #<%= @event.boardgame.name %></span></h1>
+<div class="d-flex align-items-baseline">
+  <i class="fas fa-calendar-alt icon-card pink mr-2"></i>
+  <p class="mr-2"><%= @event.start_time.strftime("%e %b %l:%M") %> - <%= @event.end_time.strftime("%H:%M") %></p>
+  <i class="fas fa-users icon-card orange mr-2"></i>
+  <p class="mr-2"><%= @event.participations.select { |p| p.statut == "Accepted" }.count + 1 %> / <%= @event.nb_players %></p>
+  <i class="fas fa-map-marker-alt icon-card blue mr-2"></i>
+  <p class="mr-2"><%= @event.address %></p>
+</div>
+<p ><%= link_to "Back to the event", event_path(@event), class: 'text-decoration-none text-muted' %></p>
+<div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+  <% @chatroom.messages.each do |message| %>
+    <%= render "messages/message", message: message %>
+  <% end %>
+</div>
+
+<%= simple_form_for [ @event, @chatroom, @message ], remote: true do |f| %>
+  <%= f.input :content, label: false, id: "chatroom-placeholder", placeholder: "Message ##{@event.boardgame.name}" %>
+<% end %>

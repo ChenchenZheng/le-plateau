@@ -22,7 +22,6 @@
 .search-category {
   width: 220px;
   height: 78px;
-  text-align: center;
   background-color: #C4C4C4;
   border-radius: 20px;
 }
@@ -30,7 +29,6 @@
 .search-category-homepage {
   width: 450px;
   height: 78px;
-  text-align: center;
   background-color: #C4C4C4;
   border-radius: 20px;
 }
@@ -72,6 +70,9 @@
   display: none;
 }
 
+.form-control-events:focus-visible{
+  outline: none;
+}
 
 .search-button {
   border: none;
@@ -81,6 +82,10 @@
 
 .btn-search {
   height: 78px;
+}
+
+.btn:focus {
+  box-shadow: none;
 }
 
 .ap-dropdown-menu {

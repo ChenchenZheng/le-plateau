@@ -90,3 +90,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #connect with google
 gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection"
+#emoji
+gem 'gemoji'
