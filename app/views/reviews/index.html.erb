@@ -1,0 +1,10 @@
+<h1>Vous avez particié à un évènement : <%= @event.boardgame.name %> à <%= @event.start_time.strftime("%e %b %l:%M") %></h1>
+<p>Merci de donner une note à tous les autres participants</p>
+
+<% @event.reviews.where(from_user_id: current_user).each do |review| %>
+  <% if review.comment.blank? %>
+    <%= link_to "Laissez une note pour #{review.to_user.first_name}", edit_event_review_path(@event, review) %><br>
+  <% else %>
+    <p><%= "Vous avez déjà donné une note pour #{review.to_user.first_name}" %></p>
+  <% end %>
+<% end %>

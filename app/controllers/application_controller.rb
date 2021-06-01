@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  before_action :passed_event_participed_organized
+  before_action :reviews_to_give_for_participants
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   include Pundit
@@ -30,5 +32,16 @@ class ApplicationController < ActionController::Base
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+  end
+
+  def reviews_to_give_for_participants
+    passed_events = Event.where("end_time < ?", Time.zone.now)
+    @give_reviews_for_participants = passed_events.left_joins(:participations).where(user_id: current_user.id).or(passed_events.left_joins(:participations).where(participations: {user_id: current_user.id})).uniq.map(&:users).flatten.uniq
+  end
+
+  def passed_event_participed_organized
+    passed_events = Event.where("end_time < ?", Time.zone.now)
+    @all_events = passed_events.left_joins(:participations).where(user_id: current_user.id).or(passed_events.left_joins(:participations).where(participations: {user_id: current_user.id})).uniq
+    @all_events_with_participants = @all_events.select { |e| e.participations.count > 1 }
   end
 end
