@@ -2,7 +2,7 @@
   <!-- Button trigger modal -->
   <button type="button" class="btn-flat position-relative" data-toggle="modal" data-target="#exampleModal">
     Liste des participants
-    <% if current_user.ordered_requests.where(statut: "Pending").count >=1 %>
+    <% if current_user.ordered_requests(event.id).where(statut: "Pending").count >=1 %>
       <i class="fas fa-clock icon-card orange mr-2 position-absolute"></i>
     <% end %>
   </button>
@@ -22,10 +22,10 @@
             <div class="row d-flex justify-content-center align-items-center">
               <div class="col-8">
                 <ul>
-                  <% if current_user.ordered_requests.empty? %>
+                  <% if current_user.ordered_requests(event.id).empty? %>
                     <h3 class="mt-5">Pas de demandes de participation pour le moment... </h3>
                   <% else %>
-                    <% current_user.ordered_requests.each do |request|  %>
+                    <% current_user.ordered_requests(event.id).each do |request|  %>
                       <li class="participants-details">
                         <%= request.user.photo.attached? ? cl_image_tag(request.user.photo.key, class:"img_profile_participants") : image_tag('user.jpg', class:"img_profile_participants") %><strong><%= request.user.first_name.capitalize %></strong>
                         <% if request.statut == "Pending" %>
