@@ -15,8 +15,8 @@ class User < ApplicationRecord
          :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  def ordered_requests
-    requests.order('created_at DESC')
+  def ordered_requests(event_id)
+    requests.where(event_id: event_id).order('created_at DESC')
   end
 
   def self.from_omniauth(access_token)
