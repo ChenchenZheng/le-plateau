@@ -29,8 +29,14 @@
         transition: 0.3s;
         margin-right: 15px;
   
-        &:hover {
+        &.active {
           color: $accent-pink;
+          border-bottom: 2px solid $accent-pink;
+          padding-bottom: 3px
+        }
+
+        &:not(.active):hover {
+          color: white;
         }
       }
     }

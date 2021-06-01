@@ -8,6 +8,7 @@
 user1 = User.create!(
   first_name: "Jean-Pierre",
   last_name: "Pernaud",
+  birth_date: Date.new(1986, 3, 24),
   email: "jean-pierre.pernauddd@tf1.fr",
   password: "123456"
 )
@@ -15,7 +16,8 @@ user1 = User.create!(
 user2 = User.create!(
   first_name: "Claire",
   last_name: "Chazal",
-  email: "Claire.chazalll@tf1.fr",
+  birth_date: Date.new(1986, 3, 24),
+  email: "Claire.chazal@tf1.fr",
   password: "123456"
 )
 
@@ -42,4 +44,3 @@ loup_garou = Boardgame.create!(
   level: "Difficile",
   duration: 2
 )
-

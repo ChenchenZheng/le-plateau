@@ -27,6 +27,9 @@ import { initAutocomplete} from '../plugins/init_autocomplete';
 import { dynamicTabs } from '../components/onglets';
 import {initChatroomCable} from '../channels/chatroom_channel';
 import { load_quagga } from '../plugins/init_quagga'
+import { addClassActive } from '../components/navbar';
+import { initFlatpickr } from "../plugins/flatpickr";
+
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -38,5 +41,7 @@ document.addEventListener('turbolinks:load', () => {
   dynamicTabs();
   load_quagga();
   initChatroomCable();
+  addClassActive();
+  initFlatpickr();
 });
 

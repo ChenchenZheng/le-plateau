@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :events do
+    resources :participations, only: [:new, :create, :destroy]
     resources :chatrooms, only: :show do
       resources :messages, only: :create
     end
