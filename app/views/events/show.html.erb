@@ -62,6 +62,16 @@
   </div>
 </div>
 
+<em><p>Invitez vos amis</p></em>
+<div>
+  <%= link_to "https://wa.me/33#{current_user.phone_number.delete_prefix('0')}?text=Venez%20jouer%20avec%20moi%20ici%20https://www.leplateau.app/events/#{@event.id}", target: '_blank' do %>
+    <i class="fab fa-whatsapp" style="margin-right: 25px; font-size: x-large; color: #25D366"></i>
+  <% end %>
+  <%= link_to "mailto:?subject=Hey! Faisons une partie de #{@event.boardgame.name}&body=Rejoins%20moi%20sur%20cette%20partie%20https://www.leplateau.app/events/#{@event.id}", target: '_blank' do %>
+    <i class="fas fa-envelope" style="font-size: x-large; color: aliceblue"></i>
+  <% end %>
+</div>
+
 <div class="game-card d-flex justify-content-between mt-5">
   <div class="game-infos-text">
     <h2><%= @event.boardgame.name %></h2>

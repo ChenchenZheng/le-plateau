@@ -9,6 +9,7 @@ user1 = User.create!(
   first_name: "Jean-Pierre",
   last_name: "Pernaud",
   birth_date: Date.new(1986, 3, 24),
+  phone_number: "0668390317",
   email: "jean-pierre.pernaud@tf1.fr",
   password: "123456"
 )
@@ -17,7 +18,17 @@ user2 = User.create!(
   first_name: "Claire",
   last_name: "Chazal",
   birth_date: Date.new(1986, 3, 24),
+  phone_number: "0668390317",
   email: "Claire.chazal@tf1.fr",
+  password: "123456"
+)
+
+user3 = User.create!(
+  first_name: "Maxime",
+  last_name: "Jacob",
+  birth_date: Date.new(1986, 3, 24),
+  phone_number: "0668390317",
+  email: "maxime.jacob@me.com",
   password: "123456"
 )
 
