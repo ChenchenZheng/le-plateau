@@ -27,12 +27,12 @@
                   <% else %>
                     <% current_user.ordered_requests.each do |request|  %>
                       <li class="participants-details">
-                        <%= request.user.photo.attached? ? cl_image_tag(request.user.photo.key, class:"img_profile_participants") : image_tag('user.jpg', class:"img_profile_participants") %><strong><%= request.user.first_name.capitalize %></strong>
+                        <%= request.user.photo.attached? ? cl_image_tag(request.user.photo.key, class:"img_profile_participants") : image_tag('user.jpg', class:"img_profile_participants") %><h5 class="mb-0"><strong><%= request.user.first_name.capitalize %></strong></h5>
                         <% if request.statut == "Pending" %>
                           <h6 class="mb-0"><%= link_to "Accepter", accept_participation_path(request), class: 'text-decoration-none'  %> <%= link_to "Décliner", decline_participation_path(request), class: 'text-decoration-none' %></h6>
                         <% elsif request.statut == "Accepted"%>
                           <h6 class ="text-success mb-0">Accepté </i></h6>
-                          <%= link_to "Retirer", decline_participation_path(request), data: {confirm: "Êtes-vous sûr de vouloir changer le statut et décliner la participation de #{request.user.first_name}?"}, class: 'text-danger text-decoration-none' %>
+                          <h6 class="mb-0"><%= link_to "Retirer", decline_participation_path(request), data: {confirm: "Êtes-vous sûr de vouloir changer le statut et décliner la participation de #{request.user.first_name}?"}, class: 'text-danger text-decoration-none' %></h6>
                         <% else %>
                           <h6 class ="text-danger mb-0">Décliné</i></h6>
                         <% end %>

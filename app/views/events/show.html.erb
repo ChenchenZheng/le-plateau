@@ -16,8 +16,7 @@
             <% if @current_user_participation.statut == "Declined" %>
               <h6 class ="text-danger mb-0">Décliné <i class="far fa-times-circle"></i></h6>
             <% elsif @current_user_participation.statut == "Accepted"%>
-              <h6 class ="text-success mb-0">Accepté <i class="far fa-check-circle"></i></h6>
-              <%= link_to "Annuler ma participation", participation_path(@current_user_participation), method: :delete, data: {confirm: "Êtes-vous sûr ?"}, class: 'text-warning text-decoration-none' %>
+              <h6 class ="text-success mb-0">Participation acceptée !</h6>
             <% elsif @current_user_participation.statut == "Pending"%>
               <h6 class="text-warning mb-0">Statut: en attente <i class="far fa-clock"></i></h6>
               <%= link_to "Annuler ma participation", participation_path(@current_user_participation), method: :delete, data: {confirm: "Êtes-vous sûr ?"}, class: 'text-warning text-decoration-none' %>
@@ -65,7 +64,7 @@
   </div>
 </div>
 
-<em><p>Invitez vos amis</p></em>
+<p>Invitez vos amis !</p>
 <div>
   <%= link_to "https://wa.me/?text=Viens%20jouer%20à%20#{@event.boardgame.name}%20avec%20moi%20ici%20https://www.leplateau.app/events/#{@event.id}", target: '_blank' do %>
     <i class="fab fa-whatsapp" style="margin-right: 25px; font-size: x-large; color: #25D366"></i>
