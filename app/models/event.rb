@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
   belongs_to :user
   belongs_to :boardgame
+  has_many :participations, dependent: :destroy
   has_one :chatroom
   has_many :participations
   has_many :users, through: :participations
