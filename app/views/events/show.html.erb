@@ -18,6 +18,7 @@
       <i class="fas fa-map-marker-alt icon-card blue mr-2"></i>
       <p class="mr-2"><%= @event.address %></p>
     </div>
+    <p><%= link_to "Chatroom", event_chatroom_path(@event) %></p>
     <p><%= @event.description %></p>
   </div>
 
