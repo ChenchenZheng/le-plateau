@@ -1,6 +1,5 @@
 <div class="card-dashboard" style="position:relative;">
   <%= link_to "", event_path(event), class:'text-white text-decoration-none link_show_dashboard' %>
-
   <%= event.boardgame.photo.attached? ? cl_image_tag(event.boardgame.photo.key, class:"img_game") : image_tag("explodingkittens.jpg" , class:"img_game") %>
   <%= event.user.photo.attached? ? cl_image_tag(event.user.photo.key, class:"img_profile") : image_tag('user.jpg', class:"img_profile") %>
   <div class="card-dashboard-info">
@@ -20,8 +19,8 @@
       <div>
         <%= render 'shared/modal_liste_participants', user: event.user, request: @request, event: @event, participation: event.participations, boardgame: @boardgame %>
         <div class="dashboard_edit_delete">
-          <small><%= link_to 'Éditer', edit_event_path(event), class:'btn_edit_event' %></small>
-          <small><%= link_to "Supprimer", event_path(event, page:'dashboard'), method: :delete, data: {confirm: "Êtes-vous sûr ?"}, class: 'text-danger'  %></small>
+          <small><%= link_to 'Éditer', edit_event_path(event), class:'btn_edit_event text-decoration-none text-white' %></small>
+          <small><%= link_to "Supprimer", event_path(event, page:'dashboard'), method: :delete, data: {confirm: "Êtes-vous sûr ?"}, class: 'text-danger text-decoration-none'  %></small>
         </div>
       </div>
     </div>
