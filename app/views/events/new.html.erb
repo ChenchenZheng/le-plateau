@@ -5,13 +5,13 @@
 </div>
 <div class="container w-50">
   <%= simple_form_for @event do |f| %>
-    <%= f.association :boardgame, collection: Boardgame.all.order(:name), label: "A quel jeu voulez-vous jouer?", include_blank: false %>
-    <%= f.input :address, label: "Où voulez-vous y jouer?" %>
-    <%= f.input :city, label: "Dans quelle ville?" %>
-    <%= f.input :description, label: "Dites quelques mots à propos de votre évènement" %>
-    <%= f.input :nb_players, label: "Combien de joueurs vous faut-il?" %>
-    <%= f.input :start_time, label: "Quand commence l'évènement?" %>
-    <%= f.input :end_time, label: "Quand se termine l'évènement?"%>
+    <%= f.association :boardgame, collection: Boardgame.all.order(:name), label: "A quel jeu voulez-vous jouer ?", include_blank: false %>
+    <%= f.input :address, label: "Où voulez-vous y jouer ?" %>
+    <%= f.input :city, label: "Dans quelle ville ?" %>
+    <%= f.input :description, label: "Dites quelques mots à propos de votre évènement :" %>
+    <%= f.input :nb_players, label: "Combien de joueurs vous faut-il ?" %>
+    <%= f.input :start_time, as: :string, label: "Quand commence l'évènement ?", input_html: {id: "range_start"} %>
+    <%= f.input :end_time, as: :string, label: "Quand se termine l'évènement ?", input_html: {id: "range_end"}%>
     <%= link_to "Retour", events_path, class:'btn-flat clair' %>
     <%= f.button :submit, "Créer", class:"btn-flat" %>
   <% end %>
