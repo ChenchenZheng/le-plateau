@@ -108,6 +108,17 @@ ActiveRecord::Schema.define(version: 2021_06_01_080334) do
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.text "comment"
+    t.integer "rating"
+    t.bigint "event_id", null: false
+    t.integer "from_user_id"
+    t.integer "to_user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_reviews_on_event_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -134,4 +145,5 @@ ActiveRecord::Schema.define(version: 2021_06_01_080334) do
   add_foreign_key "messages", "users"
   add_foreign_key "participations", "events"
   add_foreign_key "participations", "users"
+  add_foreign_key "reviews", "events"
 end
