@@ -1,4 +1,4 @@
 class Chatroom < ApplicationRecord
   has_many :messages
-  belongs_to :event, optional: true
+  belongs_to :event
 end
