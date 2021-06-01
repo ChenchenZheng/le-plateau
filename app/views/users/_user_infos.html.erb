@@ -1,6 +1,6 @@
 <div class="event-profile mt-5 user-card" data-controller="edit-user" data-edit-user-target="userCard">
   <% if @user == current_user %>
-    <i class='fas fa-pen fa-xs ml-2' data-action='click->edit-user#displayForm'></i>
+    <i class='fas fa-edit fa-xs ml-2' data-action='click->edit-user#displayForm'></i>
   <% end %>
   <div class="user-infos" data-edit-user-target="infos">
     <%= @user.photo.attached? ? cl_image_tag(@user.photo.key) : image_tag('user.jpg') %>

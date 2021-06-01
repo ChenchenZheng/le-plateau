@@ -9,18 +9,22 @@
       <p><%= event.start_time > Time.current ? "Dans #{distance_of_time_in_words(event.start_time - Time.current)}" : "Évènement terminé" %></p>
     </div>
     <p class="event-description"><%= event.description %></p>
-    <div class="event-dashboard-description d-flex align-items-baseline">
-      <i class="fas fa-map-marker-alt icon-card blue mr-2"></i>
-      <p class="mr-2"><%= event.city %></p>
-      <i class="fas fa-signal icon-card violet mr-2"></i>
-      <p class="mr-2"><%= event.boardgame.category %></p>
-      <i class="fas fa-users icon-card orange mr-2"></i>
+    <div class="event-dashboard-description d-flex align-items-baseline justify-content-between event-icons">
+      <i class="fas fa-map-marker-alt icon-card blue"></i>
+      <p class="mr-4"> <%= event.city %></p>
+      <i class="fas fa-signal icon-card violet"></i>
+      <p class="mr-4"><%= event.boardgame.category %></p>
+      <i class="fas fa-users icon-card orange"></i>
       <p><%= event.participations.select { |p| p.statut == "Accepted" }.count + 1 %> / <%= event.nb_players %></p>
       <div>
-        <%= render 'shared/modal_liste_participants', user: event.user, request: @request, event: @event, participation: event.participations, boardgame: @boardgame %>
-        <div class="dashboard_edit_delete">
-          <small><%= link_to 'Éditer', edit_event_path(event), class:'btn_edit_event text-decoration-none text-white' %></small>
-          <small><%= link_to "Supprimer", event_path(event, page:'dashboard'), method: :delete, data: {confirm: "Êtes-vous sûr ?"}, class: 'text-danger text-decoration-none'  %></small>
+        <div class="dashboard_edit_delete d-flex align-items-center">
+        <%= render 'shared/modal_liste_participants', user: event.user, request: @request, event: event, participation: event.participations, boardgame: @boardgame %>
+          <%= link_to edit_event_path(event) do %>
+            <i class="fas fa-edit icon-card blue text-decoration-none ml-3 mr-2"></i>
+          <% end %>
+          <%= link_to event_path(event, page:'dashboard'), method: :delete, data: {confirm: "Êtes-vous sûr de supprimer cet évènement ?"} do %>
+            <i class="fas fa-trash-alt icon-card pink text-decoration-none"></i>
+          <% end %>
         </div>
       </div>
     </div>
