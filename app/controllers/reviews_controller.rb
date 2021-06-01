@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
   def index
     @reviews = policy_scope(Review).order(created_at: :desc)
     @event = Event.find(params[:event_id])
-    @to_users = @event.users
+    @other_participations = @event.participations.where.not(user_id: current_user) # I note everyone but me
   end
 
   def new

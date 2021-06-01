@@ -1,6 +1,8 @@
 require "open-uri"
 
 class User < ApplicationRecord
+  has_many :given_reviews, class_name: "Review", foreign_key: "from_user_id"
+  has_many :received_reviews, class_name: "Review", foreign_key: "to_user_id"
   has_many :events
   has_many :participations
   has_many :requests, through: :events, source: :participations

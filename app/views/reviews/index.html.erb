@@ -1,4 +1,4 @@
 <h1>Laissez un review pour tous les participants</h1>
-<% @to_users.each do |user| %>
-  <%= link_to "Laissez un review pour #{user.first_name}", new_event_review_path(to_user_id: user.id) %><br>
+<% @other_participations.each do |participation| %>
+  <%= link_to "Laissez un review pour #{participation.user.first_name}", new_event_review_path(to_user_id: participation.user.id) %><br>
 <% end %>
