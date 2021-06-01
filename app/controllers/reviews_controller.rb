@@ -5,22 +5,20 @@ class ReviewsController < ApplicationController
     @other_participations = @event.participations.where.not(user_id: current_user) # I note everyone but me
   end
 
-  def new
-    @review = Review.new(to_user_id: params[:to_user_id])
+  def edit
+    @review = Review.find(params[:id])
     @event = Event.find(params[:event_id])
     authorize @review
   end
 
-  def create
-    @review = Review.new(review_params)
+  def update
+    @review = Review.find(params[:id])
     authorize @review
     @event = Event.find(params[:event_id])
-    @review.event = @event
-    @review.from_user = current_user
-    if @review.save
-      redirect_to root_path
+    if @review.update(review_params)
+      redirect_to event_reviews_path
     else
-      render :new
+      render :edit
     end
   end
 

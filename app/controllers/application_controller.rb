@@ -41,6 +41,7 @@ class ApplicationController < ActionController::Base
 
   def passed_event_participed_organized
     passed_events = Event.where("end_time < ?", Time.zone.now)
-    @passed_events_participed_organized = passed_events.left_joins(:participations).where(user_id: current_user.id).or(passed_events.left_joins(:participations).where(participations: {user_id: current_user.id})).uniq
+    @all_events = passed_events.left_joins(:participations).where(user_id: current_user.id).or(passed_events.left_joins(:participations).where(participations: {user_id: current_user.id})).uniq
+    @all_events_with_participants = @all_events.select { |e| e.participations.count > 1 }
   end
 end

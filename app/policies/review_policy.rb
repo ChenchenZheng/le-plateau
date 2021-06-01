@@ -9,15 +9,11 @@ class ReviewPolicy < ApplicationPolicy
     true
   end
 
-  def new?
+  def edit?
     true
   end
 
-  def create?
-    true
-  end
-
-  def show?
+  def update?
     true
   end
 end
