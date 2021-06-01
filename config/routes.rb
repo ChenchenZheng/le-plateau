@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  # devise_for :users
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   resources :users, only: [:show, :update]
 
@@ -15,6 +14,10 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :participations, only: [:new, :create, :destroy]
+    resources :chatrooms, only: :show do
+      resources :messages, only: :create
+    end
+    resources :participations, only: [:new, :create]
   end
 
   resources :participations, only: [:edit, :update, :destroy] do
