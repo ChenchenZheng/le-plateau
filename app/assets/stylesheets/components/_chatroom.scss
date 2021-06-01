@@ -18,11 +18,14 @@
   padding-top: 1rem;
   overflow: scroll;
   max-height: calc(100vh - 70px - 65px - 71px);
+  background: $background-card;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 #new_message {
-  padding: 1rem;
-  border-top: 1px solid $gray-200;
+  margin-top: 10px;
 
   .form-group {
     margin-bottom: 0;

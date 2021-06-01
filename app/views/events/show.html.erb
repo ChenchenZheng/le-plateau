@@ -6,8 +6,8 @@
   <div class="event-details">
     <div class="cta-group d-flex justify-content-between align-items-center mb-4">
       <h2>Description de l’événement</h2>
-      <%= render 'shared/modal_rejoindre' %>
-      <button><%= link_to "Chatroom", event_chatroom_path(@event) %></button>
+
+      <%= link_to "Chatroom", event_chatroom_path(@event), class: 'btn-flat clair' %>
       <% if current_user == @event.user %>
         <%= render 'shared/modal_liste_participants', user: @event.user, request: @request, event: @event, participation: @event.participations, boardgame: @boardgame %>
       <% else %>
@@ -17,10 +17,10 @@
               <h6 class ="text-danger mb-0">Décliné <i class="far fa-times-circle"></i></h6>
             <% elsif @current_user_participation.statut == "Accepted"%>
               <h6 class ="text-success mb-0">Accepté <i class="far fa-check-circle"></i></h6>
-              <%= link_to "Annuler ma participation", participation_path(@current_user_participation), method: :delete, data: {confirm: "Êtes-vous sûr ?"}, class: 'text-danger' %>
+              <%= link_to "Annuler ma participation", participation_path(@current_user_participation), method: :delete, data: {confirm: "Êtes-vous sûr ?"}, class: 'text-warning text-decoration-none' %>
             <% elsif @current_user_participation.statut == "Pending"%>
               <h6 class="text-warning mb-0">Statut: en attente <i class="far fa-clock"></i></h6>
-              <%= link_to "Annuler ma participation", participation_path(@current_user_participation), method: :delete, data: {confirm: "Êtes-vous sûr ?"}, class: 'text-danger' %>
+              <%= link_to "Annuler ma participation", participation_path(@current_user_participation), method: :delete, data: {confirm: "Êtes-vous sûr ?"}, class: 'text-warning text-decoration-none' %>
             <% end %>
           <% else %>
             <%= render 'shared/modal_rejoindre' %>
