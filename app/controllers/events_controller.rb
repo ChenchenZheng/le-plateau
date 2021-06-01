@@ -43,7 +43,11 @@ class EventsController < ApplicationController
     authorize @event
     @user = current_user
     @event.user = @user
+    c = Chatroom.new
+    c.save
+    @event.chatroom_id = c.id
     if @event.save
+      @event.chatroom = Chatroom.find(@event.chatroom_id)
       redirect_to event_path(@event)
     else
       render :new

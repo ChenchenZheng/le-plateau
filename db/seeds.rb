@@ -9,7 +9,7 @@ user1 = User.create!(
   first_name: "Jean-Pierre",
   last_name: "Pernaud",
   birth_date: Date.new(1986, 3, 24),
-  email: "jean-pierre.pernaud@tf1.fr",
+  email: "jean-pierre.pernauddd@tf1.fr",
   password: "123456"
 )
 
