@@ -3,8 +3,8 @@ class Event < ApplicationRecord
   belongs_to :boardgame
   has_many :reviews
   has_many :participations, dependent: :destroy
-  has_one :chatroom
-  has_many :participations
+  has_one :chatroom, dependent: :destroy
+  # has_many :participations
   has_many :users, through: :participations
   validates :address, presence: true
   validates :description, length: { minimum: 20 }, presence: true
