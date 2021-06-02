@@ -1,7 +1,7 @@
 <h1><%= "Laissez un review pour #{@review.to_user.first_name}" %></h1>
 <%= simple_form_for [@event, @review] do |f| %>
   <%= f.input :comment, label: "Voulez-vous laisser un commentaire à #{@review.to_user.first_name} ?" %>
-  <%= f.input :rating, label: "Voulez-vous évaluer #{@review.to_user.first_name} ?" %>
+  <%= f.input :rating, label: "Laissez une note à #{@review.to_user.first_name} ?" %>
   <%= f.input :to_user_id, as: "hidden" %>
-  <%= f.button :submit, class:"btn-flat" %>
+  <%= f.button :submit, "Envoyer", class:"btn-flat" %>
 <% end %>
