@@ -4,7 +4,10 @@ class CreateNilReviewJob < ApplicationJob
   def perform
     yesterday_events = Event.where(end_time: 1.day.ago.all_day)
     yesterday_events.each do |event|
-      from_to_users = event.users.map(&:id).combination(2).to_a
+      host = event.user
+      participants = event.users
+      users = participants << host
+      from_to_users = users.map(&:id).combination(2).to_a
       from_to_users += from_to_users.map(&:reverse)
 
       from_to_users.each do |from_user, to_user|
