@@ -1,13 +1,17 @@
- <h1>Create a new boardgame</h1>
+ <div class="container text-center mb-5">
+  <h1 class="mt-5 mb-5">Ajoutez votre jeu de société</h1>
+</div>
+<div class="container w-50">
   <%= simple_form_for @boardgame do |f| %>
-    <%= f.input :name %>
-    <%= f.input :barcode %>
-    <%= f.input :description, as: :string  %>
-    <%= f.input :category %>
-    <%= f.input :level %>
-    <%= f.input :duration %>
+    <%= f.input :name, label: "Quel est le nom du jeu de société ?"%>
+    <%= f.input :barcode, label: "Quel est son code-barres ?"%>
+    <%= f.input :description, as: :string, label: "Quelles sont les règles ?"%>
+    <%= f.input :category, label: "Quelle est la catégorie ?" %>
+    <%= f.input :level, label: "Quel est le niveau ?" %>
+    <%= f.input :duration, label: "Combien de temps dure une partie ?" %>
     <%= f.input :photo, as: :file %>
-    <div class="form-actions">
-      <%= f.button :submit, "Create boardgame", class: "btn-flat mt-3" %>
+    <div class="form-actions d-flex justify-content-end">
+      <%= f.button :submit, "Ajouter", class: "btn-flat mt-3" %>
     </div>
   <% end %>
+</div>
