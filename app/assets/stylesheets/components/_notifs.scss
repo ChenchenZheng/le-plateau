@@ -1,0 +1,17 @@
+.btn-wrap {
+  position: relative;
+}
+
+#notifs.fa-envelope {
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  top: -5px;
+  right: 10px;
+  color:$accent-pink;
+  display: none;
+}
+
+#notifs.active {
+  display: block;
+}

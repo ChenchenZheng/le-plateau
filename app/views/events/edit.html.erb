@@ -8,9 +8,9 @@
     <%= f.input :city, label: "Dans quelle ville ?" %>
     <%= f.input :description, label: "Dites quelques mots à propos de votre évènement :" %>
     <%= f.input :nb_players, label: "Combien de joueurs vous faut-il ?" %>
-    <%= f.input :start_time, as: :string, label: "Quand commence l'évènement ?", input_html: {id: "range_start"} %>
-    <%= f.input :end_time, as: :string, label: "Quand se termine l'évènement ?", input_html: {id: "range_end"}%>
+    <%= f.input :start_time, as: :string, label: "Quand commence l'évènement ?" %>
+    <%= f.input :end_time, as: :string, label: "Quand se termine l'évènement ?"%>
     <%= link_to "Retour", events_path, class:'btn-flat clair' %>
-    <%= f.button :submit, "Créer", class:"btn-flat" %>
+    <%= f.button :submit, "Modifier", class:"btn-flat" %>
   <% end %>
 </div>

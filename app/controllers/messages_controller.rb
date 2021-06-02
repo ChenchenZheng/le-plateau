@@ -8,6 +8,7 @@ class MessagesController < ApplicationController
     @message.user = current_user
     if @message.save
       ChatroomChannel.broadcast_to(@chatroom, render_to_string(partial: "message", locals: { message: @message }))
+      NotificationChannel.broadcast_to(@event, render_to_string(partial: "message", locals: { message: @message }))
       redirect_to event_chatroom_path(@event, @chatroom, anchor: "message-#{@message.id}")
     else
       render "chatrooms/show"
