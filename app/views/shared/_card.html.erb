@@ -16,5 +16,8 @@
       <i class="fas fa-users icon-card orange"></i>
       <p><%= event.participations.select { |p| p.statut == "Accepted" }.count + 1 %> / <%= event.nb_players %></p>
     </div>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style='<%= "width: #{event.completion_percentage}%" %>' aria-valuenow='<%= "#{event.completion_percentage}%" %>' aria-valuemin="0" aria-valuemax="100"><%= event.completion_percentage %> %</div>
+    </div>
   </div>
 </div>
