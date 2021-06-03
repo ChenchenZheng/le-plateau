@@ -7,3 +7,29 @@
   padding: 20px;
   border-radius: 5px;
 }
+
+.event-profile {
+  width: 20%;
+  background-color: $background-card;
+  border-radius: 5px;
+  padding: 20px;
+  position: relative;
+
+  h5 {
+    margin-top: 50px;
+  }
+
+ img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  position: absolute;
+  top: -48px;
+  left: 30%;
+  }
+
+  ul {
+    list-style-type: none;
+    padding-inline-start: 0px !important;
+  }
+}
