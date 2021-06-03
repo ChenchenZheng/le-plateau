@@ -30,6 +30,7 @@ import {notifications} from '../channels/notification_channel';
 import { load_quagga } from '../plugins/init_quagga'
 import { addClassActive } from '../components/navbar';
 import { initFlatpickr } from "../plugins/flatpickr";
+import {updateInputOnButtonClick} from "../components/increment_buttons";
 
 
 // Internal imports, e.g:
@@ -49,5 +50,6 @@ document.addEventListener('turbolinks:load', () => {
   addClassActive();
   initFlatpickr();
   notifications();
+  updateInputOnButtonClick();
 });
 
