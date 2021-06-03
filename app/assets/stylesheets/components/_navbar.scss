@@ -1,9 +1,10 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: $background-black;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 1;
+  width:100%;
   
   .navbar-brand img {
     width: 40px;
