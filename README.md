@@ -1,5 +1,5 @@
 # Le Plateau
-👉 Check our web application here : [Le plateau - Trouve ton jeu de société, tes buddies ou les deux !](https://www.leplateau.app/)
+👉 Check our web application here: [Le plateau - Trouve ton jeu de société, tes buddies ou les deux !](https://www.leplateau.app/)
 
 🎯 **Target**: Fans of board games who can’t afford all the games they wish for.
 
