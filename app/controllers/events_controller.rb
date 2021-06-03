@@ -34,6 +34,7 @@ class EventsController < ApplicationController
 
   def new
     @boardgames = Boardgame.all
+    @scan_boardgame = Boardgame.find(params[:boardgame]) if params[:boardgame].present?
     @event = Event.new
     authorize @event
   end
