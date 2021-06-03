@@ -5,7 +5,7 @@
 </div>
 <div class="container w-50">
   <%= simple_form_for @event do |f| %>
-    <%= f.association :boardgame, input_html: { class: 'select2' }, collection: Boardgame.all.order(:name), label: "A quel jeu voulez-vous jouer ?", include_blank: false %>
+    <%= f.association :boardgame, input_html: { class: 'select2', id:'boardgame_select' }, collection: Boardgame.all.order(:name), label: "A quel jeu voulez-vous jouer ?", selected: @scan_boardgame&.id %>
     <%= f.input :address, label: "Où voulez-vous y jouer ?" %>
     <%= f.input :city, label: "Dans quelle ville ?" %>
     <%= f.input :description, label: "Dites quelques mots à propos de votre évènement :" %>

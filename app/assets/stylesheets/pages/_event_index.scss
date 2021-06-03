@@ -1,0 +1,15 @@
+.main-container {
+  display: flex;
+}
+
+#map {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.cards-index {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
