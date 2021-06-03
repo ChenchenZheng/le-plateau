@@ -50,6 +50,5 @@ document.addEventListener('turbolinks:load', () => {
   addClassActive();
   initFlatpickr();
   notifications();
-  updateInputOnButtonClick();
 });
 
