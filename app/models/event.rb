@@ -17,6 +17,10 @@ class Event < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
 
   def completion_percentage
-    (((self.participations.select { |p| p.statut == "Accepted" }.count + 1).to_f / (self.nb_players).to_f) * 100).to_i
+    if self.nb_players > 0
+      (((self.participations.select { |p| p.statut == "Accepted" }.count + 1).to_f / (self.nb_players).to_f) * 100).to_i
+    else
+      0
+    end
   end
 end
