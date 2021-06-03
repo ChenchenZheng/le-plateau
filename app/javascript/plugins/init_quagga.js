@@ -33,7 +33,7 @@ function load_quagga(){
             data: { barcode: code }
           });
           call.fail(function(){
-            alert('Raprochez le jeu et augmentez la luminosité de la condition');
+            alert('Raprochez le jeu ou éclairez le codebar :)');
             window.location = window.location.href + "#refresh";
             window.location.reload();
           })
