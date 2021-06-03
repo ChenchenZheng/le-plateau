@@ -79,7 +79,13 @@
       <i class="fas fa-envelope" id = "notifs" data-event_id =" <%=@event.id%>"></i>
     </div>
     <% if current_user == @event.user %>
-      <%= render 'shared/modal_liste_participants', user: @event.user, request: @request, event: @event, participation: @event.participations, boardgame: @boardgame %>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn-flat" data-toggle="modal" data-target="#exempleModal_<%= @event.id %>">
+        Liste des participants
+        <% if current_user.ordered_requests(@event.id).where(statut: "Pending").count >=1 %>
+          <i class="fas fa-exclamation-circle icon-card"></i>
+        <% end %>
+      </button>
     <% else %>
       <div>
         <% if @event.users.include?(current_user) %>
@@ -92,9 +98,15 @@
             <%= link_to "Annuler ma participation", participation_path(@current_user_participation), method: :delete, data: {confirm: "Êtes-vous sûr ?"}, class: 'text-warning text-decoration-none' %>
           <% end %>
         <% else %>
-          <%= render 'shared/modal_rejoindre' %>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn-flat" data-toggle="modal" data-target="#exampleModal">
+            Rejoindre
+          </button>
         <% end %>
       </div>
     <% end %>
   </div>
 </div>
+
+<%= render 'shared/modal_rejoindre' %>
+<%= render 'shared/modal_liste_participants', user: @event.user, request: @request, event: @event, participation: @event.participations, boardgame: @boardgame %>

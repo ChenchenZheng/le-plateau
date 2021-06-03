@@ -18,6 +18,12 @@
       <p><%= event.participations.select { |p| p.statut == "Accepted" }.count + 1 %> / <%= event.nb_players %></p>
       <div>
         <div class="dashboard_edit_delete d-flex align-items-center">
+        <button type="button" class="btn-flat" data-toggle="modal" data-target="#exempleModal_<%= event.id %>">
+          Liste des participants
+          <% if current_user.ordered_requests(event.id).where(statut: "Pending").count >=1 %>
+            <i class="fas fa-exclamation-circle icon-card"></i>
+          <% end %>
+        </button>
         <%= render 'shared/modal_liste_participants', user: event.user, request: @request, event: event, participation: event.participations, boardgame: @boardgame, current_user: current_user %>
           <%= link_to edit_event_path(event) do %>
             <i class="fas fa-edit icon-card blue text-decoration-none ml-3 mr-2"></i>
