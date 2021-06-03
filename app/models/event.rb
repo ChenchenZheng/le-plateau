@@ -15,4 +15,8 @@ class Event < ApplicationRecord
   validates :city, presence: true
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+
+  def completion_percentage
+    (((self.participations.select { |p| p.statut == "Accepted" }.count + 1).to_f / (self.nb_players).to_f) * 100).to_i
+  end
 end
