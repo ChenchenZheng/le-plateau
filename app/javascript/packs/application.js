@@ -30,15 +30,11 @@ import {notifications} from '../channels/notification_channel';
 import { load_quagga } from '../plugins/init_quagga'
 import { addClassActive } from '../components/navbar';
 import { initFlatpickr } from "../plugins/flatpickr";
-import {updateInputOnButtonClick} from "../components/increment_buttons";
+import {incrementButtons} from "../components/increment_buttons";
+import { initSelect2 } from '../components/init_select2';
 
 
 // Internal imports, e.g:
-import { initSelect2 } from '../components/init_select2';
-
-document.addEventListener("turbolinks:load", function () {
-  initSelect2();
-});
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -50,5 +46,7 @@ document.addEventListener('turbolinks:load', () => {
   addClassActive();
   initFlatpickr();
   notifications();
+  incrementButtons();
+  initSelect2();
 });
 
