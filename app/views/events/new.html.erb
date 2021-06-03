@@ -7,16 +7,15 @@
   <%= simple_form_for @event do |f| %>
     <%= f.association :boardgame, input_html: { class: 'select2', id:'boardgame_select' }, collection: Boardgame.all.order(:name), label: "A quel jeu voulez-vous jouer ?", selected: @scan_boardgame&.id %>
     <%= f.input :address, label: "Où voulez-vous y jouer ?" %>
-    <%= f.input :city, label: "Dans quelle ville ?" %>
     <%= f.input :description, label: "Dites quelques mots à propos de votre évènement :" %>
     <div class="incremental-button">
       <span class="btn minus-btn incrementer" data-offset="-1">-</span><%= f.input :nb_players, label: "Combien de joueurs vous faut-il ?", id: "counter", input_html: {min: '0', value: '0' } %><span class="btn plus-btn incrementer" data-offset="1">+</span>
     </div>
-    <%= f.input :start_time, as: :string, label: "Quand commence l'évènement ?" %>
-    <%= f.input :end_time, as: :string, label: "Quand se termine l'évènement ?"%>
+    <div class="form_group">
+      <%= f.input :start_time, as: :string, label: "Quand commence l'évènement ?" %>
+      <%= f.input :end_time, as: :string, label: "Quand se termine l'évènement ?"%>
+    </div>
     <%= link_to "Retour", events_path, class:'btn-flat clair float-left' %>
     <%= f.button :submit, "Créer", class:"btn-flat float-right" %>
-
   <% end %>
 </div>
-

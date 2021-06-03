@@ -41,6 +41,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.city = params[:event][:address].split(',')[1].split.first
     authorize @event
     @user = current_user
     @event.user = @user
