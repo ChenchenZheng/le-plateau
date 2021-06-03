@@ -74,7 +74,7 @@
       <i class="fas fa-map-marker-alt icon-card blue mr-2"></i>
       <p class="mr-2"><%= @event.address %></p>
     </div>
-    <div class="btn-wrap mb-3">
+    <div class="btn-wrap text-center d-flex mb-3">
       <%= link_to "Chatroom", event_chatroom_path(@event), class: 'btn-flat clair' %>
       <i class="fas fa-envelope" id = "notifs" data-event_id =" <%=@event.id%>"></i>
     </div>
