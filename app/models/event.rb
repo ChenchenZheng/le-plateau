@@ -9,8 +9,9 @@ class Event < ApplicationRecord
   validates :address, presence: true
   validates :description, length: { minimum: 20 }, presence: true
   validates :nb_players, presence: true
+  validates_numericality_of :nb_players, greather_than: 0
   validates :start_time, presence: true
-  validates :end_time, presence: true
+  # validates :end_time, presence: true
   validates :city, presence: true
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?

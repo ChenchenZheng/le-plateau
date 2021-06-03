@@ -1,0 +1,39 @@
+#event_nb_players {
+  width: 50px;
+  position: relative;
+  top: 41px;
+  left: 69px;
+  padding-left:19px;
+}
+
+.minus-btn {
+  position: relative;
+  font-size: 20px;
+  top: 82px;
+  right: -3px;
+  border: 2px solid $accent-pink;
+  color: $accent-pink;
+  border-radius: 50px;
+  padding: 5px 15px;
+}
+
+.plus-btn {
+  position: relative;
+  font-size: 20px;
+  bottom: 17px;
+  left: 146px;
+  border: 2px solid $accent-pink;
+  color: $accent-pink;
+  border-radius: 50px;
+  padding: 5px 13px;
+}
+
+label[for=event_nb_players] {
+  position: absolute;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

@@ -9,10 +9,14 @@
     <%= f.input :address, label: "Où voulez-vous y jouer ?" %>
     <%= f.input :city, label: "Dans quelle ville ?" %>
     <%= f.input :description, label: "Dites quelques mots à propos de votre évènement :" %>
-    <%= f.input :nb_players, label: "Combien de joueurs vous faut-il ?" %>
+    <div class="incremental-button">
+      <span class="btn minus-btn incrementer" data-offset="-1">-</span><%= f.input :nb_players, label: "Combien de joueurs vous faut-il ?", id: "counter", input_html: {min: '0', value: '0' } %><span class="btn plus-btn incrementer" data-offset="1">+</span>
+    </div>
     <%= f.input :start_time, as: :string, label: "Quand commence l'évènement ?" %>
     <%= f.input :end_time, as: :string, label: "Quand se termine l'évènement ?"%>
-    <%= link_to "Retour", events_path, class:'btn-flat clair' %>
-    <%= f.button :submit, "Créer", class:"btn-flat" %>
+    <%= link_to "Retour", events_path, class:'btn-flat clair float-left' %>
+    <%= f.button :submit, "Créer", class:"btn-flat float-right" %>
+
   <% end %>
 </div>
+
