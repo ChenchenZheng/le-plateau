@@ -13,7 +13,7 @@ class BoardgamesController < ApplicationController
     @boardgame = Boardgame.new(boardgame_params)
     authorize @boardgame
     if @boardgame.save
-      redirect_to new_event_path
+      redirect_to new_event_path(boardgame: @boardgame)
     else
       render :new
     end
