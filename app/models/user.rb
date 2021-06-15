@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :participations
   has_many :requests, through: :events, source: :participations
   has_one_attached :photo
-  validates_format_of :phone_number, with: /(?:(?:)0)\s*[1-9](?:[\s.-]*\d{2}){4}/ #, message: "seulement des numéros en 06 et à 10 caractères"
+  validates_format_of :phone_number, with: /(?:(?:)0)\s*[1-9](?:[\s.-]*\d{2}){4}/ # message: "seulement des numéros en 06 et à 10 caractères"
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
