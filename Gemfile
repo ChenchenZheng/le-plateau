@@ -23,44 +23,39 @@ gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
 # gem for search bar
 gem 'pg_search', '~> 2.3.0'
-
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
-
 gem 'devise'
 gem 'devise-i18n'
-
 gem 'pundit'
-
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
 gem 'simple_form'
 # Geocoding
 gem 'geocoder'
-
 gem 'cloudinary', '~> 1.16.0'
-
 gem 'rails-i18n'
-
 # Admin page pour les dev
 gem 'rails_admin', '~> 2.0'
 gem 'rails_admin-i18n'
-
 # Add super graphe
 gem "chartkick"
-
 # Add group by date gem
 gem 'groupdate'
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# connect with google
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection"
+# emoji
+gem 'gemoji'
 
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
-
-
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
@@ -83,12 +78,3 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-#connect with google
-gem 'omniauth-google-oauth2'
-gem "omniauth-rails_csrf_protection"
-#emoji
-gem 'gemoji'
