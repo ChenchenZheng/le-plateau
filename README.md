@@ -1,4 +1,6 @@
 # Le Plateau
+❗️ **This project is hosted on Heroku with a free plan, please be patient when you visit it.**
+
 👉 Check our web application here: [Le plateau - Trouve ton jeu de société, tes buddies ou les deux !](https://www.leplateau.app/)
 
 🎯 **Target**: Fans of board games who can’t afford all the games they wish for.
